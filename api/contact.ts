@@ -331,6 +331,29 @@ export default async function handler(
 
     const resend = new Resend(resendApiKey);
 
+    // Determine environment
+    const env = process.env.VERCEL_ENV ?? process.env.NODE_ENV;
+    const isProd = env === 'production';
+    const contactEmail = process.env.CONTACT_EMAIL?.trim();
+
+    // Determine recipient (to)
+    // dev/preview: use CONTACT_EMAIL or fallback to test email (never send to prod email)
+    // prod: use CONTACT_EMAIL or fallback to info@yuit-inc.jp
+    const toEmail = isProd
+      ? contactEmail || 'info@yuit-inc.jp'
+      : contactEmail || 'boasorte85@gmail.com';
+
+    // Determine sender (from)
+    // dev/preview: always use onboarding@resend.dev (Resend test domain)
+    // prod: use FROM_EMAIL if set (wrapped in display name), otherwise fallback to onboarding
+    const fromEmail = isProd
+      ? (process.env.FROM_EMAIL?.trim()
+          ? `YUIT Contact Form <${process.env.FROM_EMAIL.trim()}>`
+          : 'YUIT Contact Form <onboarding@resend.dev>')
+      : 'YUIT Contact Form <onboarding@resend.dev>';
+
+    console.log(`[Contact API] env=${env}, isProd=${isProd}, to=${toEmail}, from=${fromEmail}`);
+
     // Build email content
     const subject = `[YUIT Contact] ${category} - ${name}`;
     const htmlBody = buildEmailHtml({
@@ -344,8 +367,8 @@ export default async function handler(
 
     // Send email
     const { error } = await resend.emails.send({
-      from: 'YUIT Contact Form <onboarding@resend.dev>',
-      to: process.env.CONTACT_EMAIL || 'info@yuit-inc.jp',
+      from: fromEmail,
+      to: toEmail,
       replyTo: email,
       subject,
       html: htmlBody,
@@ -356,7 +379,35 @@ export default async function handler(
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      const resendError = error as { statusCode?: number; message?: string; name?: string };
+      const statusCode = resendError.statusCode;
+      const errorMessage = resendError.message || 'Unknown error';
+
+      console.error(`Resend error: statusCode=${statusCode}, message=${errorMessage}`, error);
+
+      // Return specific error messages based on status code
+      if (statusCode === 401) {
+        res.status(500).json({
+          ok: false,
+          message: 'Resend API key is invalid or expired',
+        });
+        return;
+      }
+      if (statusCode === 403) {
+        res.status(500).json({
+          ok: false,
+          message: 'Resend domain not verified or test mode restriction. Check from/to settings.',
+        });
+        return;
+      }
+      if (statusCode === 429) {
+        res.status(503).json({
+          ok: false,
+          message: 'Rate limit exceeded. Please try again later.',
+        });
+        return;
+      }
+
       res.status(500).json({ ok: false, message: 'Failed to send email' });
       return;
     }
