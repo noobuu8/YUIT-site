@@ -1121,18 +1121,14 @@ const Home = ({ theme }: { theme: ThemeType }) => {
         </div>
       </section>
 
-      <section id="news" className={`py-20 relative ${theme === ThemeType.TRUST ? 'bg-slate-50' : ''}`}>
+      <section id="news" className="py-20 relative">
         <div className="container mx-auto px-6">
            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
               <div>
-                <span className={`inline-block px-4 py-1.5 text-sm md:text-xl font-bold mb-3 tracking-widest ${
-                  theme === ThemeType.POP ? 'bg-black text-white' : 
-                  theme === ThemeType.TROPICAL ? 'bg-cyan-500/20 text-cyan-100 border border-cyan-500/30 rounded-full' : 
-                  'text-yuit-teal bg-teal-50 rounded'
-                }`}>
+                <span className="inline-block px-4 py-1.5 text-sm md:text-xl font-bold mb-3 tracking-widest bg-black text-white">
                   LATEST INFO
                 </span>
-                <h2 className={`text-5xl md:text-8xl font-bold ${theme === ThemeType.TROPICAL ? 'text-white' : 'text-slate-800'}`}>
+                <h2 className="text-5xl md:text-8xl font-bold text-slate-800">
                   News & Topics
                 </h2>
               </div>
@@ -1140,7 +1136,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                 href="https://note.com/yuit_note"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-lg md:text-3xl font-bold flex items-center gap-2 hover:underline ${theme === ThemeType.TROPICAL ? 'text-cyan-200' : 'text-slate-500'}`}
+                className="text-lg md:text-3xl font-bold flex items-center gap-2 hover:underline text-slate-500"
               >
                  View All <ChevronRight size={20} className="md:w-8 md:h-8" />
               </a>
