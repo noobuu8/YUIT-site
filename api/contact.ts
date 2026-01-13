@@ -345,7 +345,7 @@ export default async function handler(
     // Send email
     const { error } = await resend.emails.send({
       from: 'YUIT Contact Form <onboarding@resend.dev>',
-      to: 'info@yuit-inc.jp',
+      to: process.env.CONTACT_EMAIL || 'info@yuit-inc.jp',
       replyTo: email,
       subject,
       html: htmlBody,
