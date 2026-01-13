@@ -936,14 +936,10 @@ const Home = ({ theme }: { theme: ThemeType }) => {
       <section id="what" className="py-24">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto text-center">
-            <span className={`inline-block px-5 py-2 text-sm md:text-xl font-bold mb-6 tracking-widest ${
-              theme === ThemeType.POP ? 'bg-black text-white' : 
-              theme === ThemeType.TROPICAL ? 'bg-white/20 text-white border border-white/40 rounded-full' : 
-              'text-yuit-teal bg-teal-50 rounded-full'
-            }`}>
+            <span className="inline-block px-5 py-2 text-sm md:text-xl font-bold mb-6 tracking-widest bg-black text-white">
               ABOUT US
             </span>
-            <h2 className={`text-5xl md:text-9xl font-bold mb-14 ${theme === ThemeType.TROPICAL ? 'text-white drop-shadow-md' : 'text-slate-800'}`}>
+            <h2 className="text-5xl md:text-9xl font-bold mb-14 text-slate-800">
               WHAT’s<br/>YUIT Inc.?
             </h2>
             
@@ -952,24 +948,20 @@ const Home = ({ theme }: { theme: ThemeType }) => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.6 }}
-              className={`p-12 md:p-20 relative ${
-                theme === ThemeType.POP ? 'bg-white border-4 border-black shadow-[12px_12px_0px_0px_#38B2AC]' :
-                theme === ThemeType.TROPICAL ? 'bg-white/10 backdrop-blur-lg border border-white/30 rounded-3xl text-white shadow-2xl' :
-                'bg-white shadow-xl rounded-2xl border-t-4 border-yuit-teal'
-              }`}
+              className="p-12 md:p-20 relative bg-white border-4 border-black shadow-[12px_12px_0px_0px_#38B2AC]"
             >
                <p className="text-2xl md:text-4xl font-bold leading-relaxed mb-10">
                  人と人の結びつきを意味する<br/>「
                  <motion.span 
                    variants={highlightCharVariants}
-                   className={`inline-block ${theme === ThemeType.POP ? 'text-teal-500' : theme === ThemeType.TROPICAL ? 'text-cyan-200' : 'text-yuit-teal'}`}
+                   className="inline-block text-teal-500"
                  >
                    結
                  </motion.span>
                  」と「
                  <motion.span 
                    variants={highlightCharVariants}
-                   className={`inline-block ${theme === ThemeType.POP ? 'text-orange-500' : theme === ThemeType.TROPICAL ? 'text-orange-200' : 'text-yuit-orange'}`}
+                   className="inline-block text-orange-500"
                  >
                    IT
                  </motion.span>
@@ -985,33 +977,21 @@ const Home = ({ theme }: { theme: ThemeType }) => {
         </div>
       </section>
 
-      <section id="service" className={`py-24 relative ${theme === ThemeType.TRUST ? 'bg-slate-50' : ''}`}>
+      <section id="service" className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="w-full md:w-1/2">
-               <div className={`relative aspect-video w-full overflow-hidden ${
-                 theme === ThemeType.POP ? 'border-4 border-black rounded-none shadow-[8px_8px_0px_0px_#ED8936]' :
-                 theme === ThemeType.TROPICAL ? 'rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/20' :
-                 'rounded-lg shadow-lg'
-               }`}>
+               <div className="relative aspect-video w-full overflow-hidden border-4 border-black rounded-none shadow-[8px_8px_0px_0px_#ED8936]">
                  <img src={SES_IMAGE_URL} alt="SES Business" className="w-full h-full object-cover" />
-                 <div className={`absolute bottom-0 left-0 w-full p-8 ${
-                   theme === ThemeType.POP ? 'bg-cyan-300 border-t-4 border-black' : 
-                   theme === ThemeType.TROPICAL ? 'bg-gradient-to-t from-black/90 to-transparent text-white' : 
-                   'bg-white/95 backdrop-blur-sm'
-                 }`}>
-                   <h3 className={`text-3xl md:text-6xl font-bold ${theme === ThemeType.TROPICAL ? 'text-white' : 'text-black'}`}>SES Business</h3>
-                   <p className={`text-base md:text-2xl opacity-80 ${theme === ThemeType.TROPICAL ? 'text-gray-200' : 'text-gray-600'}`}>System Engineering Service</p>
+                 <div className="absolute bottom-0 left-0 w-full p-8 bg-cyan-300 border-t-4 border-black">
+                   <h3 className="text-3xl md:text-6xl font-bold text-black">SES Business</h3>
+                   <p className="text-base md:text-2xl opacity-80 text-gray-600">System Engineering Service</p>
                  </div>
                </div>
             </div>
 
-            <div className={`w-full md:w-1/2 ${theme === ThemeType.TROPICAL ? 'text-white' : ''}`}>
-              <h2 className={`text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-bold mb-10 ${
-                theme === ThemeType.POP ? 'bg-black text-white inline-block px-6 py-3 transform -rotate-2' : 
-                theme === ThemeType.TROPICAL ? 'text-cyan-100' :
-                'text-slate-800 border-l-4 border-yuit-teal pl-6'
-              }`}>
+            <div className="w-full md:w-1/2">
+              <h2 className="text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-bold mb-10 bg-black text-white inline-block px-6 py-3 transform -rotate-2">
                 事業内容：SES事業
               </h2>
               <p className="text-xl md:text-3xl mb-10 leading-relaxed opacity-90">
@@ -1020,11 +1000,8 @@ const Home = ({ theme }: { theme: ThemeType }) => {
               </p>
               
               <div className="grid grid-cols-1 gap-6">
-                 <div className={`p-6 flex items-start gap-6 ${
-                   theme === ThemeType.POP ? 'bg-white border-2 border-black' : 
-                   theme === ThemeType.TROPICAL ? 'bg-white/10 rounded-xl' : 'bg-white rounded shadow-sm border border-slate-100'
-                 }`}>
-                    <div className={`p-3 rounded-full ${theme === ThemeType.POP ? 'bg-yellow-300 border-2 border-black' : theme === ThemeType.TROPICAL ? 'bg-cyan-500/30' : 'bg-teal-50 text-teal-600'}`}>
+                 <div className="p-6 flex items-start gap-6 bg-white border-2 border-black">
+                    <div className="p-3 rounded-full bg-yellow-300 border-2 border-black">
                        <Zap size={24} className="md:w-10 md:h-10" />
                     </div>
                     <div>
@@ -1032,11 +1009,8 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                       <p className="text-base md:text-2xl opacity-80">独自のカリキュラムで基礎から応用までしっかりサポート。</p>
                     </div>
                  </div>
-                 <div className={`p-6 flex items-start gap-6 ${
-                   theme === ThemeType.POP ? 'bg-white border-2 border-black' : 
-                   theme === ThemeType.TROPICAL ? 'bg-white/10 rounded-xl' : 'bg-white rounded shadow-sm border border-slate-100'
-                 }`}>
-                    <div className={`p-3 rounded-full ${theme === ThemeType.POP ? 'bg-pink-300 border-2 border-black' : theme === ThemeType.TROPICAL ? 'bg-pink-500/30' : 'bg-teal-50 text-teal-600'}`}>
+                 <div className="p-6 flex items-start gap-6 bg-white border-2 border-black">
+                    <div className="p-3 rounded-full bg-pink-300 border-2 border-black">
                        <Anchor size={24} className="md:w-10 md:h-10" />
                     </div>
                     <div>
@@ -1134,10 +1108,10 @@ const Home = ({ theme }: { theme: ThemeType }) => {
         </div>
       </section>
 
-      <section id="overview" className={`py-24 relative ${theme === ThemeType.TRUST ? 'bg-slate-50' : ''}`}>
+      <section id="overview" className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className={`text-4xl md:text-8xl font-bold mb-16 text-center ${theme === ThemeType.TROPICAL ? 'text-white' : 'text-slate-800'}`}>
+            <h2 className="text-4xl md:text-8xl font-bold mb-16 text-center text-slate-800">
               Overview / 会社概要
             </h2>
             
