@@ -455,93 +455,246 @@ const PopNews = ({ items, isLoading, error }: NewsListProps) => {
   );
 };
 
-const PopContact = () => (
-  <div className="bg-orange-300 border-4 border-black p-8 md:p-12 shadow-[12px_12px_0px_0px_black] relative overflow-hidden">
-    <div className="absolute -right-10 -top-10 text-orange-400 opacity-50 rotate-12">
-      <Mail size={240} />
-    </div>
-    <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-start">
-      <div className="lg:sticky lg:top-24">
-        <h3 className="text-5xl md:text-8xl font-black mb-6 bg-white inline-block px-6 py-2 border-4 border-black transform -rotate-2">
-          Contact Us
-        </h3>
-        <p className="font-bold text-2xl md:text-4xl mb-8">
-          お仕事のご依頼、採用についてなど、<br/>お気軽にお問い合わせください！
-        </p>
-        <div className="space-y-6">
-          <div className="flex items-center gap-4 font-bold bg-white/50 p-4 rounded border-2 border-black w-fit text-lg md:text-3xl">
-            <Mail size={28} className="md:w-10 md:h-10" /> <span>info@yuit-inc.jp</span>
-          </div>
-          <div className="flex items-center gap-4 font-bold bg-white/50 p-4 rounded border-2 border-black w-fit text-lg md:text-3xl">
-            <MapPin size={28} className="md:w-10 md:h-10" /> <span>沖縄県那覇市安里381-1</span>
+const PopContact = () => {
+  const [name, setName] = useState('');
+  const [kana, setKana] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [category, setCategory] = useState('');
+  const [message, setMessage] = useState('');
+  const [files, setFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  const MAX_FILES = 3;
+  const MAX_TOTAL_SIZE = 30 * 1024 * 1024;
+  const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'pdf'];
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = e.target.files;
+    if (!selectedFiles || selectedFiles.length === 0) return;
+
+    const fileArray = Array.from(selectedFiles);
+
+    // Validate file count
+    if (fileArray.length > MAX_FILES) {
+      setSubmitResult({ type: 'error', message: `添付ファイルは最大${MAX_FILES}点までです` });
+      e.target.value = '';
+      return;
+    }
+
+    // Validate total size
+    const totalSize = fileArray.reduce((sum, f) => sum + f.size, 0);
+    if (totalSize > MAX_TOTAL_SIZE) {
+      setSubmitResult({ type: 'error', message: '添付ファイルの合計サイズが30MBを超えています' });
+      e.target.value = '';
+      return;
+    }
+
+    // Validate extensions
+    for (const file of fileArray) {
+      const ext = file.name.split('.').pop()?.toLowerCase() || '';
+      if (!ALLOWED_EXTENSIONS.includes(ext)) {
+        setSubmitResult({ type: 'error', message: `対応していないファイル形式です: ${file.name}` });
+        e.target.value = '';
+        return;
+      }
+    }
+
+    // All validations passed
+    setFiles(fileArray);
+    setSubmitResult(null);
+  };
+
+  const resetForm = () => {
+    setName('');
+    setKana('');
+    setPhone('');
+    setEmail('');
+    setCategory('');
+    setMessage('');
+    setFiles([]);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitResult(null);
+
+    // Validation
+    if (!name.trim()) {
+      setSubmitResult({ type: 'error', message: '氏名・会社名は必須です' });
+      return;
+    }
+    if (!email.trim()) {
+      setSubmitResult({ type: 'error', message: 'メールアドレスは必須です' });
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setSubmitResult({ type: 'error', message: 'メールアドレスの形式が正しくありません' });
+      return;
+    }
+    if (!category) {
+      setSubmitResult({ type: 'error', message: 'お問い合わせ項目を選択してください' });
+      return;
+    }
+
+    // File validation
+    if (files.length > MAX_FILES) {
+      setSubmitResult({ type: 'error', message: `添付ファイルは最大${MAX_FILES}点までです` });
+      return;
+    }
+    const totalSize = files.reduce((sum, f) => sum + f.size, 0);
+    if (totalSize > MAX_TOTAL_SIZE) {
+      setSubmitResult({ type: 'error', message: '添付ファイルの合計サイズが30MBを超えています' });
+      return;
+    }
+    for (const file of files) {
+      const ext = file.name.split('.').pop()?.toLowerCase() || '';
+      if (!ALLOWED_EXTENSIONS.includes(ext)) {
+        setSubmitResult({ type: 'error', message: `対応していないファイル形式です: ${file.name}` });
+        return;
+      }
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('category', category);
+      if (kana) formData.append('kana', kana);
+      if (phone) formData.append('phone', phone);
+      if (message) formData.append('message', message);
+      for (const file of files) {
+        formData.append('attachments', file);
+      }
+
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await res.json();
+
+      if (data.ok) {
+        setSubmitResult({ type: 'success', message: 'お問い合わせを送信しました。ありがとうございます！' });
+        resetForm();
+      } else {
+        setSubmitResult({ type: 'error', message: data.message || '送信に失敗しました' });
+      }
+    } catch {
+      setSubmitResult({ type: 'error', message: 'ネットワークエラーが発生しました' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="bg-orange-300 border-4 border-black p-8 md:p-12 shadow-[12px_12px_0px_0px_black] relative overflow-hidden">
+      <div className="absolute -right-10 -top-10 text-orange-400 opacity-50 rotate-12">
+        <Mail size={240} />
+      </div>
+      <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-start">
+        <div className="lg:sticky lg:top-24">
+          <h3 className="text-5xl md:text-8xl font-black mb-6 bg-white inline-block px-6 py-2 border-4 border-black transform -rotate-2">
+            Contact Us
+          </h3>
+          <p className="font-bold text-2xl md:text-4xl mb-8">
+            お仕事のご依頼、採用についてなど、<br/>お気軽にお問い合わせください！
+          </p>
+          <div className="space-y-6">
+            <div className="flex items-center gap-4 font-bold bg-white/50 p-4 rounded border-2 border-black w-fit text-lg md:text-3xl">
+              <Mail size={28} className="md:w-10 md:h-10" /> <span>info@yuit-inc.jp</span>
+            </div>
+            <div className="flex items-center gap-4 font-bold bg-white/50 p-4 rounded border-2 border-black w-fit text-lg md:text-3xl">
+              <MapPin size={28} className="md:w-10 md:h-10" /> <span>沖縄県那覇市安里381-1</span>
+            </div>
           </div>
         </div>
-      </div>
-      <form className="bg-white p-8 border-4 border-black space-y-6 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.5)]">
-         <div className="space-y-6">
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">氏名・会社名 <span className="text-pink-500">*</span></label>
-                <input type="text" required className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
-             </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">フリガナ</label>
-                <input type="text" className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
-             </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">電話番号（ハイフンなし）</label>
-                <input type="tel" className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
-             </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">メールアドレス <span className="text-pink-500">*</span></label>
-                <input type="email" required className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
-             </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">お問い合わせ項目 <span className="text-pink-500">*</span></label>
-                <div className="relative border-2 border-black bg-gray-50">
-                  <select required className="w-full p-3 font-bold text-lg md:text-3xl bg-transparent appearance-none focus:outline-none">
-                     <option value="">選択してください</option>
-                     <option value="business">事業内容について</option>
-                     <option value="recruit">採用について</option>
-                     <option value="other">その他</option>
-                  </select>
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                     <ChevronRight size={20} className="md:w-8 md:h-8" />
+        <form onSubmit={handleSubmit} className="bg-white p-8 border-4 border-black space-y-6 shadow-[8px_8px_0px_0px_rgba(255,255,255,0.5)]">
+           <div className="space-y-6">
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">氏名・会社名 <span className="text-pink-500">*</span></label>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">フリガナ</label>
+                  <input type="text" value={kana} onChange={(e) => setKana(e.target.value)} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">電話番号（ハイフンなし）</label>
+                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">メールアドレス <span className="text-pink-500">*</span></label>
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none" />
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">お問い合わせ項目 <span className="text-pink-500">*</span></label>
+                  <div className="relative border-2 border-black bg-gray-50">
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} className="w-full p-3 font-bold text-lg md:text-3xl bg-transparent appearance-none focus:outline-none">
+                       <option value="">選択してください</option>
+                       <option value="事業内容について">事業内容について</option>
+                       <option value="採用について">採用について</option>
+                       <option value="その他">その他</option>
+                    </select>
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                       <ChevronRight size={20} className="md:w-8 md:h-8" />
+                    </div>
                   </div>
-                </div>
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">お問い合わせ内容</label>
+                  <textarea rows={4} value={message} onChange={(e) => setMessage(e.target.value)} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none"></textarea>
+               </div>
+               <div>
+                  <label className="block font-black mb-2 text-lg md:text-3xl">添付ファイル（任意）</label>
+                  <label className="flex items-center gap-3 w-full bg-gray-100 border-2 border-black border-dashed p-6 cursor-pointer hover:bg-cyan-50 transition-colors">
+                    <Paperclip size={24} className="md:w-8 md:h-8" />
+                    <span className="font-bold text-base md:text-2xl">ファイルの選択</span>
+                    <input ref={fileInputRef} type="file" multiple accept=".png,.jpg,.jpeg,.pdf" onChange={handleFileChange} className="hidden" />
+                  </label>
+                  {files.length > 0 && (
+                    <div className="mt-3 space-y-1">
+                      {files.map((file, idx) => (
+                        <p key={idx} className="text-sm md:text-xl font-bold text-teal-600">{file.name}</p>
+                      ))}
+                    </div>
+                  )}
+                  <div className="text-sm md:text-xl mt-3 font-bold text-gray-600 space-y-1">
+                     <p>会社概要などございましたらご提出ください。</p>
+                     <p>・添付数：最大3点</p>
+                     <p>・ファイルサイズ：合計30.0MB以下</p>
+                     <p>・ファイル拡張子：png / jpg / pdf / jpeg</p>
+                  </div>
+               </div>
+               <div className="flex items-start gap-3 pt-2">
+                 <input type="checkbox" id="privacy-pop" required className="mt-1.5 w-5 h-5 md:w-8 md:h-8 border-2 border-black rounded-none text-cyan-500 focus:ring-0 cursor-pointer" />
+                 <label htmlFor="privacy-pop" className="text-base md:text-2xl font-bold cursor-pointer">
+                   <a href="https://yuit-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer" className="underline decoration-2 underline-offset-2 hover:text-cyan-600">プライバシーポリシー</a>
+                   に同意する
+                 </label>
+               </div>
+           </div>
+           {submitResult && (
+             <div className={`p-4 border-2 border-black font-bold text-lg md:text-2xl ${submitResult.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+               {submitResult.message}
              </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">お問い合わせ内容</label>
-                <textarea rows={4} className="w-full bg-gray-50 border-2 border-black p-3 font-bold text-lg md:text-3xl focus:bg-cyan-50 focus:outline-none"></textarea>
-             </div>
-             <div>
-                <label className="block font-black mb-2 text-lg md:text-3xl">添付ファイル（任意）</label>
-                <label className="flex items-center gap-3 w-full bg-gray-100 border-2 border-black border-dashed p-6 cursor-pointer hover:bg-cyan-50 transition-colors">
-                  <Paperclip size={24} className="md:w-8 md:h-8" />
-                  <span className="font-bold text-base md:text-2xl">ファイルの選択</span>
-                  <input type="file" multiple accept=".png,.jpg,.jpeg,.pdf" className="hidden" />
-                </label>
-                <div className="text-sm md:text-xl mt-3 font-bold text-gray-600 space-y-1">
-                   <p>会社概要などございましたらご提出ください。</p>
-                   <p>・添付数：最大3点</p>
-                   <p>・ファイルサイズ：合計30.0MB以下</p>
-                   <p>・ファイル拡張子：png / jpg / pdf / jpeg</p>
-                </div>
-             </div>
-             <div className="flex items-start gap-3 pt-2">
-               <input type="checkbox" id="privacy-pop" required className="mt-1.5 w-5 h-5 md:w-8 md:h-8 border-2 border-black rounded-none text-cyan-500 focus:ring-0 cursor-pointer" />
-               <label htmlFor="privacy-pop" className="text-base md:text-2xl font-bold cursor-pointer">
-                 <a href="https://yuit-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer" className="underline decoration-2 underline-offset-2 hover:text-cyan-600">プライバシーポリシー</a>
-                 に同意する
-               </label>
-             </div>
-         </div>
-         <button className="w-full bg-black text-white font-black py-5 text-xl md:text-4xl border-2 border-black hover:bg-teal-500 hover:text-black transition-colors flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_#ED8936]">
-           送信する <Send size={24} className="md:w-8 md:h-8" />
-         </button>
-      </form>
+           )}
+           <button type="submit" disabled={isSubmitting} className="w-full bg-black text-white font-black py-5 text-xl md:text-4xl border-2 border-black hover:bg-teal-500 hover:text-black transition-colors flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_#ED8936] disabled:opacity-50 disabled:cursor-not-allowed">
+             {isSubmitting ? '送信中...' : '送信する'} {!isSubmitting && <Send size={24} className="md:w-8 md:h-8" />}
+           </button>
+        </form>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // --- RECRUIT PAGE COMPONENT ---
 const Recruit = ({ theme }: { theme: ThemeType }) => {
