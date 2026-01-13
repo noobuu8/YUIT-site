@@ -3,7 +3,6 @@ import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { ThemeType, NewsItem } from './types';
 import { MENU_ITEMS, COMPANY_OVERVIEW, SOCIAL_LINKS, NEWS_ITEMS as STATIC_NEWS_ITEMS } from './constants';
 import { Logo } from './components/Logo';
-import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { Menu, X, Instagram, Mail, ExternalLink, Palmtree, Waves, Sun, Heart, Zap, Anchor, ArrowRight, Send, MapPin, ChevronRight, Paperclip, Briefcase, Laptop, Users, Sparkles, Smile, Quote, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence, Variants, useInView } from 'framer-motion';
 
@@ -290,7 +289,7 @@ const President = ({ theme }: { theme: ThemeType }) => {
 
 // 1. POP THEME COMPONENTS
 const PopHero = () => (
-  <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-yellow-50 pt-32 pb-20">
+  <div className="relative min-h-[90vh] lg:min-h-[78vh] flex items-center justify-center overflow-hidden bg-yellow-50 pt-28 pb-16 lg:pt-20 lg:pb-12">
     <div className="absolute inset-0 z-0 pointer-events-none">
       <motion.div 
         animate={{ rotate: 360 }}
@@ -299,10 +298,10 @@ const PopHero = () => (
       >
         <Sun size={160} className="text-yellow-200" />
       </motion.div>
-      <div className="absolute top-40 left-10 text-cyan-400 transform -rotate-12 hidden md:block">
+      <div className="absolute top-24 lg:top-12 left-10 text-cyan-400 transform -rotate-12 hidden md:block">
         <Palmtree size={140} strokeWidth={2.5} className="drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] text-teal-500 fill-teal-100" />
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-cyan-300 border-t-4 border-black flex items-end overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-cyan-300 border-t-4 border-black flex items-end">
          <div className="w-full flex justify-between px-10 pb-4">
             {[...Array(12)].map((_, i) => (
                <Waves key={i} size={56} className="text-white animate-bounce" style={{ animationDelay: `${i * 0.1}s` }} />
@@ -316,7 +315,7 @@ const PopHero = () => (
         initial={{ scale: 0.8, opacity: 0 }} 
         animate={{ scale: 1, opacity: 1 }} 
         transition={{ type: "spring", bounce: 0.5 }}
-        className="relative w-full max-w-[90vw] xl:max-w-7xl mb-12 flex justify-center items-center"
+        className="relative w-full max-w-[90vw] xl:max-w-7xl mb-8 scale-95 origin-top flex justify-center items-center lg:-translate-y-6"
       >
         {/* Center Photo Container - serves as anchor */}
         <div className="relative w-full max-w-4xl z-20">
@@ -352,7 +351,7 @@ const PopHero = () => (
         </div>
       </motion.div>
       
-      <div className="flex items-center justify-center gap-4 md:block relative z-30">
+      <div className="flex items-center justify-center gap-4 md:block relative z-30 -translate-y-8 lg:-translate-y-10">
           <div className="md:hidden transform -rotate-12 flex-shrink-0">
             <Palmtree size={64} strokeWidth={2.5} className="drop-shadow-[3px_3px_0px_rgba(0,0,0,1)] text-teal-500 fill-teal-100" />
           </div>
@@ -539,367 +538,6 @@ const PopContact = () => (
          <button className="w-full bg-black text-white font-black py-5 text-xl md:text-4xl border-2 border-black hover:bg-teal-500 hover:text-black transition-colors flex items-center justify-center gap-3 shadow-[4px_4px_0px_0px_#ED8936]">
            送信する <Send size={24} className="md:w-8 md:h-8" />
          </button>
-      </form>
-    </div>
-  </div>
-);
-
-// 2. TROPICAL THEME COMPONENTS
-const TropicalHero = () => (
-  <div className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pb-20 pt-32">
-    <div className="absolute inset-0 z-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600 animate-gradient-xy"></div>
-    <div className="absolute inset-0 z-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-    
-    <div className="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }} 
-        animate={{ opacity: 1, x: 0 }} 
-        transition={{ duration: 1 }}
-        className="md:w-1/2 text-white"
-      >
-        <h1 className="text-6xl md:text-9xl font-bold leading-tight mb-8 drop-shadow-lg">
-          Connect<br/>
-          <span className="text-cyan-200">The Future</span>
-        </h1>
-        <p className="text-xl md:text-4xl opacity-90 mb-10 font-light tracking-wide border-l-4 border-cyan-300 pl-8">
-          沖縄から世界へ。<br/>
-          ITの力で、新しい価値と可能性を結びます。
-        </p>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 1, delay: 0.2 }}
-        className="md:w-1/2 p-6 rounded-[2rem] bg-white/10 backdrop-blur-md border border-white/30 shadow-2xl w-full max-w-2xl"
-      >
-        <div className="rounded-[1.5rem] overflow-hidden shadow-inner relative group">
-             <img src={GROUP_PHOTO_URL} alt="YUIT Team" className="w-full h-auto opacity-90 group-hover:scale-105 transition-transform duration-700" />
-             <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent pointer-events-none"></div>
-             <div className="absolute bottom-8 left-8 text-white">
-                <p className="font-bold text-xl md:text-4xl tracking-widest flex items-center gap-3">
-                  <Sun size={24} className="text-yellow-300 md:w-10 md:h-10" /> TEAM YUIT
-                </p>
-             </div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-const TropicalOverview = () => (
-  <div className="backdrop-blur-xl bg-white/20 border border-white/40 rounded-3xl overflow-hidden shadow-2xl text-white">
-    <div className="grid divide-y divide-white/20">
-      {COMPANY_OVERVIEW.map((item, idx) => (
-        <div key={idx} className="flex flex-col md:flex-row hover:bg-white/10 transition-colors group">
-          <div className="md:w-1/3 p-8 bg-white/5 font-bold tracking-widest text-cyan-100 flex items-center gap-3 group-hover:text-white transition-colors text-lg md:text-3xl">
-             <div className="w-3 h-3 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,0.8)]"></div>
-             {item.label}
-          </div>
-          <div className="md:w-2/3 p-8 font-medium text-xl md:text-4xl">
-            {item.value}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const TropicalNews = ({ items, isLoading, error }: NewsListProps) => {
-  if (isLoading) {
-    return (
-      <div className="space-y-6">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 animate-pulse h-32 flex items-center gap-6">
-             <div className="w-24 h-24 bg-white/10 rounded-lg"></div>
-             <div className="flex-1 space-y-3">
-                <div className="h-5 bg-white/10 w-1/4 rounded"></div>
-                <div className="h-5 bg-white/10 w-3/4 rounded"></div>
-             </div>
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-white/10 backdrop-blur-md border border-red-400/50 rounded-2xl p-10 text-center text-red-200 font-bold text-xl">
-        <AlertCircle className="mx-auto mb-3" size={40} />
-        ニュースの読み込みに失敗しました
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      {items.map((item, i) => (
-        <motion.a 
-          key={i} 
-          href={item.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ x: 5, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
-          className="block bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 flex flex-col md:flex-row md:items-center gap-6 text-white transition-all hover:shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-        >
-          <div className="flex items-center gap-5 flex-shrink-0">
-            <span className="font-mono text-base md:text-2xl opacity-80 whitespace-nowrap">{item.date}</span>
-            {item.thumbnail ? (
-              <div className="flex-shrink-0 w-32 h-20 rounded-lg overflow-hidden border border-white/10 bg-white/5">
-                 <img src={item.thumbnail} alt="" className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" />
-              </div>
-            ) : (
-              <span className={`px-3 py-1 text-xs md:text-lg font-bold rounded-full border border-white/40 tracking-wider ${
-                 item.category === 'INFO' ? 'bg-cyan-500/30' : 'bg-pink-500/30'
-              }`}>
-                {item.category}
-              </span>
-            )}
-          </div>
-          <h3 className="flex-1 text-xl md:text-4xl font-medium tracking-wide line-clamp-2">
-            {item.title}
-          </h3>
-          <ArrowRight size={24} className="opacity-0 md:opacity-50 group-hover:opacity-100 transition-opacity ml-auto md:ml-0 md:w-10 md:h-10" />
-        </motion.a>
-      ))}
-    </div>
-  );
-};
-
-const TropicalContact = () => (
-  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 md:p-14 text-white relative overflow-hidden">
-    <div className="grid lg:grid-cols-2 gap-16 relative z-10">
-      <div>
-        <h3 className="text-4xl md:text-8xl font-bold mb-8 text-cyan-200">Contact Us</h3>
-        <p className="text-white/80 mb-10 leading-relaxed text-xl md:text-3xl">
-          お仕事のご依頼、採用についてなど、<br/>
-          以下のフォームよりお気軽にお問い合わせください。
-        </p>
-        <div className="space-y-6">
-           <div className="flex items-center gap-5 p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-lg md:text-3xl">
-              <Mail className="text-cyan-400 md:w-10 md:h-10" size={28} />
-              <span className="font-mono">info@yuit-inc.jp</span>
-           </div>
-           <div className="flex items-center gap-5 p-5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-lg md:text-3xl">
-              <MapPin className="text-cyan-400 md:w-10 md:h-10" size={28} />
-              <span>沖縄県那覇市安里381-1</span>
-           </div>
-        </div>
-      </div>
-      <form className="space-y-6">
-         <div className="space-y-6">
-             <div>
-                <label className="block text-base md:text-2xl font-bold text-cyan-100 mb-2">氏名・会社名 <span className="text-pink-400">*</span></label>
-                <input type="text" required className="w-full bg-white/5 border border-white/20 rounded p-4 text-white text-lg md:text-3xl focus:bg-white/10 focus:border-cyan-400 outline-none transition-all placeholder-white/30" />
-             </div>
-             <div>
-                <label className="block text-base md:text-2xl font-bold text-cyan-100 mb-2">メールアドレス <span className="text-pink-400">*</span></label>
-                <input type="email" required className="w-full bg-white/5 border border-white/20 rounded p-4 text-white text-lg md:text-3xl focus:bg-white/10 focus:border-cyan-400 outline-none transition-all placeholder-white/30" />
-             </div>
-             <div>
-                <label className="block text-base md:text-2xl font-bold text-cyan-100 mb-2">お問い合わせ内容</label>
-                <textarea rows={4} className="w-full bg-white/5 border border-white/20 rounded p-4 text-white text-lg md:text-3xl focus:bg-white/10 focus:border-cyan-400 outline-none transition-all placeholder-white/30"></textarea>
-             </div>
-             
-             <div className="flex items-start gap-3 pt-2">
-               <input type="checkbox" id="privacy-tropical" required className="mt-1.5 w-5 h-5 md:w-8 md:h-8 bg-white/10 border-white/30 rounded text-cyan-500 focus:ring-0 cursor-pointer" />
-               <label htmlFor="privacy-tropical" className="text-base md:text-2xl font-bold cursor-pointer text-white/80">
-                 <a href="https://yuit-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer" className="underline decoration-cyan-400 decoration-2 underline-offset-2 hover:text-cyan-200">プライバシーポリシー</a>
-                 に同意する
-               </label>
-             </div>
-
-             <div className="pt-4">
-               <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold py-5 rounded-xl shadow-lg shadow-cyan-500/20 transition-all flex items-center justify-center gap-3 transform hover:scale-[1.02] text-xl md:text-4xl">
-                 Send Message <Send size={24} className="md:w-8 md:h-8" />
-               </button>
-             </div>
-         </div>
-      </form>
-    </div>
-  </div>
-);
-
-// 3. TRUST THEME COMPONENTS
-const TrustHero = () => (
-  <div className="relative min-h-[90vh] flex items-center justify-center bg-slate-50 pt-20">
-    <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-5xl"
-      >
-        <div className="inline-flex items-center gap-3 px-5 py-2 mb-10 text-sm md:text-xl font-bold tracking-widest text-teal-700 bg-white rounded-full border border-teal-100 shadow-sm">
-           <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse"></span>
-           INNOVATION & TRUST
-        </div>
-        <h1 className="text-6xl md:text-9xl font-bold text-slate-800 mb-10 leading-tight tracking-tight">
-          Reliable Technology,<br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-600 to-blue-600">Create the Future.</span>
-        </h1>
-        <p className="text-2xl md:text-5xl text-slate-600 mb-14 max-w-4xl mx-auto leading-relaxed">
-           確かな技術と信頼で、未来を創る。<br/>
-           YUITは、お客様のビジネスを加速させるITパートナーです。
-        </p>
-        
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 bg-white p-2">
-            <img 
-               src={GROUP_PHOTO_URL} 
-               alt="YUIT Team" 
-               className="w-full h-auto rounded-xl"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent pointer-events-none rounded-xl"></div>
-        </div>
-      </motion.div>
-    </div>
-  </div>
-);
-
-const TrustOverview = () => (
-  <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
-    <div className="divide-y divide-slate-100">
-      {COMPANY_OVERVIEW.map((item, idx) => (
-        <div key={idx} className="flex flex-col md:flex-row hover:bg-slate-50/50 transition-colors">
-          <div className="md:w-1/3 p-8 bg-slate-50 font-bold text-slate-700 flex items-center border-r border-slate-100 text-lg md:text-3xl">
-             {item.label}
-          </div>
-          <div className="md:w-2/3 p-8 text-slate-600 font-medium text-xl md:text-4xl">
-             {item.value}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
-
-const TrustNews = ({ items, isLoading, error }: NewsListProps) => {
-  if (isLoading) return (
-     <div className="space-y-4">
-        {[1,2,3].map(i => (
-           <div key={i} className="h-32 bg-slate-100 animate-pulse rounded"></div>
-        ))}
-     </div>
-  );
-  if (error) return (
-     <div className="bg-red-50 border border-red-100 p-10 text-center rounded-lg text-red-600 text-lg">
-        <AlertCircle className="mx-auto mb-3 opacity-50" size={32} />
-        <span className="font-bold">Failed to load news.</span>
-     </div>
-  );
-
-  return (
-    <div className="border border-slate-200 rounded-xl bg-white overflow-hidden divide-y divide-slate-100 shadow-sm">
-      {items.map((item, i) => (
-        <a 
-          key={i} 
-          href={item.url ?? '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col md:flex-row md:items-center gap-8 p-8 hover:bg-slate-50 transition-all group"
-        >
-          <div className="flex-1 flex flex-col md:flex-row md:items-center gap-6">
-             <div className="flex flex-col gap-2 min-w-[160px] flex-shrink-0">
-                <span className="text-slate-400 text-base md:text-2xl font-mono">{item.date}</span>
-                {item.thumbnail ? (
-                  <div className="flex-shrink-0 w-32 h-20 rounded border border-slate-100 overflow-hidden bg-slate-50 mt-1">
-                     <img src={item.thumbnail} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                ) : (
-                  <span className={`self-start px-3 py-1 text-xs md:text-lg font-bold tracking-wider rounded border ${
-                     item.category === 'INFO' ? 'bg-teal-50 text-teal-700 border-teal-100' : 
-                     item.category === 'RECRUIT' ? 'bg-blue-50 text-blue-700 border-blue-100' : 
-                     'bg-slate-50 text-slate-600 border-slate-200'
-                  }`}>
-                    {item.category}
-                  </span>
-                )}
-             </div>
-             <h3 className="flex-1 text-slate-700 font-bold text-xl md:text-4xl group-hover:text-teal-600 transition-colors line-clamp-2">
-                {item.title}
-             </h3>
-          </div>
-          <div className="flex items-center gap-2 text-base md:text-2xl font-bold text-slate-400 group-hover:text-teal-600 transition-colors ml-auto">
-             Read More <ArrowRight size={20} className="md:w-8 md:h-8" />
-          </div>
-        </a>
-      ))}
-    </div>
-  );
-};
-
-const TrustContact = () => (
-  <div className="bg-slate-50 border border-slate-200 rounded-lg p-10 md:p-14">
-    <div className="text-center mb-12">
-      <h3 className="text-4xl md:text-7xl font-bold text-slate-800 mb-4">Contact Us</h3>
-      <p className="text-slate-500 text-lg md:text-3xl">お問い合わせは以下のフォームよりお願いいたします。</p>
-    </div>
-    <div className="max-w-3xl mx-auto">
-      <form className="space-y-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-3">
-            <label className="text-base md:text-2xl font-bold text-slate-700">氏名・会社名 <span className="text-red-500">*</span></label>
-            <input type="text" required className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all" />
-          </div>
-          <div className="space-y-3">
-            <label className="text-base md:text-2xl font-bold text-slate-700">フリガナ</label>
-            <input type="text" className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all" />
-          </div>
-        </div>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-3">
-            <label className="text-base md:text-2xl font-bold text-slate-700">電話番号（ハイフンなし）</label>
-            <input type="tel" className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all" />
-          </div>
-          <div className="space-y-3">
-            <label className="text-base md:text-2xl font-bold text-slate-700">メールアドレス <span className="text-red-500">*</span></label>
-            <input type="email" required className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all" />
-          </div>
-        </div>
-        <div className="space-y-3">
-           <label className="text-base md:text-2xl font-bold text-slate-700">お問い合わせ項目 <span className="text-red-500">*</span></label>
-           <div className="relative">
-             <select required className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl appearance-none focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all bg-white">
-               <option value="">選択してください</option>
-               <option value="business">事業内容について</option>
-               <option value="recruit">採用について</option>
-               <option value="other">その他</option>
-             </select>
-             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none">
-               <ChevronRight size={20} className="md:w-8 md:h-8" />
-             </div>
-           </div>
-        </div>
-        <div className="space-y-3">
-          <label className="text-base md:text-2xl font-bold text-slate-700">お問い合わせ内容</label>
-          <textarea rows={6} className="w-full border border-slate-300 rounded p-4 text-lg md:text-3xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all"></textarea>
-        </div>
-        <div className="space-y-3">
-          <label className="text-base md:text-2xl font-bold text-slate-700">添付ファイル（任意）</label>
-          <div className="relative border-2 border-dashed border-slate-300 rounded-lg p-8 hover:bg-slate-100 transition-colors text-center cursor-pointer">
-              <input type="file" multiple accept=".png,.jpg,.jpeg,.pdf" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-              <Paperclip className="mx-auto text-slate-400 mb-3 md:w-10 md:h-10" size={32} />
-              <span className="text-slate-600 text-base md:text-2xl font-medium">ファイルの選択</span>
-          </div>
-          <div className="text-sm md:text-xl text-slate-500 mt-3 space-y-1">
-             <p>会社概要などございましたらご提出ください。</p>
-             <p>・添付数：最大3点</p>
-             <p>・ファイルサイズ：合計30.0MB以下</p>
-             <p>・ファイル拡張子：png / jpg / pdf / jpeg</p>
-          </div>
-        </div>
-        <div className="flex items-center justify-center gap-3 pt-4">
-           <input type="checkbox" id="privacy-trust" required className="w-5 h-5 md:w-8 md:h-8 text-teal-600 rounded border-slate-300 focus:ring-teal-500 cursor-pointer" />
-           <label htmlFor="privacy-trust" className="text-base md:text-2xl text-slate-700 cursor-pointer select-none">
-             <a href="https://yuit-inc.jp/privacy.html" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">プライバシーポリシー</a>
-             に同意する
-           </label>
-        </div>
-        <div className="text-center pt-6">
-          <button className="bg-slate-800 text-white font-bold py-5 px-16 rounded text-xl md:text-4xl hover:bg-teal-600 transition-colors shadow-lg">
-            送信する
-          </button>
-        </div>
       </form>
     </div>
   </div>
@@ -1293,9 +931,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
 
   return (
     <>
-      {theme === ThemeType.POP && <PopHero />}
-      {theme === ThemeType.TROPICAL && <TropicalHero />}
-      {theme === ThemeType.TRUST && <TrustHero />}
+      <PopHero />
 
       <section id="what" className="py-24">
         <div className="container mx-auto px-6">
@@ -1505,9 +1141,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
               Overview / 会社概要
             </h2>
             
-            {theme === ThemeType.POP && <PopOverview />}
-            {theme === ThemeType.TROPICAL && <TropicalOverview />}
-            {theme === ThemeType.TRUST && <TrustOverview />}
+            <PopOverview />
             
           </div>
         </div>
@@ -1538,9 +1172,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
               </a>
            </div>
 
-           {theme === ThemeType.POP && <PopNews items={newsItems} isLoading={isLoading} error={error} />}
-           {theme === ThemeType.TROPICAL && <TropicalNews items={newsItems} isLoading={isLoading} error={error} />}
-           {theme === ThemeType.TRUST && <TrustNews items={newsItems} isLoading={isLoading} error={error} />}
+           <PopNews items={newsItems} isLoading={isLoading} error={error} />
         </div>
       </section>
 
@@ -1593,9 +1225,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
 
       <section id="contact" className="py-24 relative">
         <div className="container mx-auto px-6">
-          {theme === ThemeType.POP && <PopContact />}
-          {theme === ThemeType.TROPICAL && <TropicalContact />}
-          {theme === ThemeType.TRUST && <TrustContact />}
+          <PopContact />
         </div>
       </section>
     </>
@@ -1603,7 +1233,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
 };
 
 // --- LAYOUT ---
-const Layout = ({ children, theme, setTheme }: { children?: React.ReactNode, theme: ThemeType, setTheme: (t: ThemeType) => void }) => {
+const Layout = ({ children, theme }: { children?: React.ReactNode, theme: ThemeType }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -1740,19 +1370,17 @@ const Layout = ({ children, theme, setTheme }: { children?: React.ReactNode, the
             </div>
          </div>
       </footer>
-      
-      <ThemeSwitcher currentTheme={theme} setTheme={setTheme} />
     </div>
   );
 };
 
 // --- APP ---
 const App = () => {
-  const [theme, setTheme] = useState<ThemeType>(ThemeType.POP);
+  const theme = ThemeType.POP;
 
   return (
     <HashRouter>
-      <Layout theme={theme} setTheme={setTheme}>
+      <Layout theme={theme}>
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
           <Route path="/president" element={<President theme={theme} />} />
