@@ -466,7 +466,7 @@ const PopContact = () => (
         <h3 className="text-5xl md:text-8xl font-black mb-6 bg-white inline-block px-6 py-2 border-4 border-black transform -rotate-2">
           Contact Us
         </h3>
-        <p className="font-bold text-2xl md:text-5xl mb-8">
+        <p className="font-bold text-2xl md:text-4xl mb-8">
           お仕事のご依頼、採用についてなど、<br/>お気軽にお問い合わせください！
         </p>
         <div className="space-y-6">
