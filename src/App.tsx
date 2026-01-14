@@ -6,21 +6,18 @@ import { Logo } from './components/Logo';
 import { Menu, X, Instagram, Mail, ExternalLink, Palmtree, Waves, Sun, Heart, Zap, Anchor, ArrowRight, Send, MapPin, ChevronRight, Paperclip, Briefcase, Laptop, Users, Sparkles, Smile, Quote, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence, Variants, useInView } from 'framer-motion';
 
-// Placeholder for the group photo provided by user
-const GROUP_PHOTO_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/37b3eb57fb783d4abd67557b53fc85fa2c08b548/images/YUIT%E9%9B%86%E5%90%88%E5%86%99%E7%9C%9F.png";
+// Image URLs - served from public/images
+const GROUP_PHOTO_URL = "/images/group-photo.png";
+const HERO_LEFT_IMAGE_URL = "/images/hero-left.jpg";
+const HERO_RIGHT_IMAGE_URL = "/images/hero-right.png";
+const SES_IMAGE_URL = "/images/ses.png";
+const PRESIDENT_IMAGE_URL = "/images/president.jpg";
+const LOGO_URL = "/images/yuit-logo.png";
 
-// New images for PopHero
-const HERO_LEFT_IMAGE_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/eb0865d5cb2cefe0aacdbb34d5daf153be15bfdd/images/1%20%20.JPG";
-const HERO_RIGHT_IMAGE_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/eb0865d5cb2cefe0aacdbb34d5daf153be15bfdd/images/YUIT%E7%B4%A0%E6%9D%902.png";
-
-// SES Business Image URL
-const SES_IMAGE_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/eb0865d5cb2cefe0aacdbb34d5daf153be15bfdd/images/YUIT%E7%B4%A0%E6%9D%901.png";
-
-// President Profile Image URL
-const PRESIDENT_IMAGE_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/eb0865d5cb2cefe0aacdbb34d5daf153be15bfdd/images/YUIT-13.jpg";
-
-// Logo URL for Footer usage
-const LOGO_URL = "https://raw.githubusercontent.com/noobuu8/YUIT-site/f611a4c4ca62e49143ae13cb527fffc7b4bfe572/images/yuit_logo.png";
+// Fallback handler for broken images
+const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+  e.currentTarget.style.display = 'none';
+};
 
 // --- SCROLL HELPER ---
 const ScrollToTop = () => {
@@ -179,7 +176,7 @@ const President = ({ theme }: { theme: ThemeType }) => {
                    isTropical ? 'bg-white/20 rounded-full border-4 border-white/30 backdrop-blur' :
                    'bg-gray-100 rounded-lg shadow-lg'
                 }`}>
-                   <img src={PRESIDENT_IMAGE_URL} alt="盛島 加菜" className="w-full h-full object-cover" />
+                   <img src={PRESIDENT_IMAGE_URL} alt="盛島 加菜" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                 </div>
                 
                 <div className={`text-center ${isPop ? 'bg-white border-4 border-black p-4' : ''}`}>
@@ -326,7 +323,7 @@ const PopHero = () => (
             <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-[95%] lg:w-[50%] xl:w-[55%] 2xl:w-[65%] z-10 transform -rotate-6 origin-right">
                 <div className="bg-white p-3 border-4 border-black shadow-[12px_12px_0px_0px_#ED8936]">
                     <div className="border-2 border-black">
-                        <img src={HERO_LEFT_IMAGE_URL} alt="" className="w-full h-auto" />
+                        <img src={HERO_LEFT_IMAGE_URL} alt="" className="w-full h-auto" loading="lazy" decoding="async" onError={handleImageError} />
                     </div>
                 </div>
             </div>
@@ -335,7 +332,7 @@ const PopHero = () => (
             <div className="hidden lg:block absolute top-[60%] -translate-y-1/2 left-[95%] lg:w-[50%] xl:w-[55%] 2xl:w-[65%] z-10 transform rotate-6 origin-left">
                 <div className="bg-white p-3 border-4 border-black shadow-[12px_12px_0px_0px_#ED8936]">
                     <div className="border-2 border-black">
-                        <img src={HERO_RIGHT_IMAGE_URL} alt="" className="w-full h-auto" />
+                        <img src={HERO_RIGHT_IMAGE_URL} alt="" className="w-full h-auto" loading="lazy" decoding="async" onError={handleImageError} />
                     </div>
                 </div>
             </div>
@@ -343,7 +340,7 @@ const PopHero = () => (
             {/* Center Image Content */}
             <div className="bg-white p-4 border-4 border-black shadow-[16px_16px_0px_0px_#ED8936] transform -rotate-2 hover:rotate-0 transition-transform duration-300 relative z-20">
                 <div className="relative border-2 border-black">
-                    <img src={GROUP_PHOTO_URL} alt="YUIT Team" className="w-full h-auto" />
+                    <img src={GROUP_PHOTO_URL} alt="YUIT Team" className="w-full h-auto" loading="eager" decoding="async" onError={handleImageError} />
                     <div className="absolute -top-8 -right-6 md:-top-12 md:-right-10 bg-pink-500 text-white font-black px-6 py-3 md:px-12 md:py-5 border-2 border-black shadow-[4px_4px_0px_0px_black] transform rotate-3 text-2xl md:text-7xl z-30 whitespace-nowrap">
                         WE ARE YUIT!
                     </div>
@@ -436,7 +433,7 @@ const PopNews = ({ items, isLoading, error }: NewsListProps) => {
             <span className="font-bold text-gray-500 text-base md:text-2xl whitespace-nowrap">{item.date}</span>
             {item.thumbnail ? (
               <div className="w-32 h-20 border-2 border-black overflow-hidden bg-gray-100 relative flex-shrink-0">
-                 <img src={item.thumbnail} alt="" className="w-full h-full object-cover" />
+                 <img src={item.thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
               </div>
             ) : (
               <span className={`px-3 py-1 text-sm md:text-xl font-black border-2 border-black ${
@@ -754,8 +751,7 @@ const Recruit = ({ theme }: { theme: ThemeType }) => {
            <h2 className={sectionTitleClass}>ABOUT / 私たちについて</h2>
            <div className="grid md:grid-cols-2 gap-16 items-center">
               <div>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team" 
-                     className={`w-full h-auto object-cover aspect-video ${isPop ? 'border-4 border-black shadow-[8px_8px_0px_0px_black]' : isTropical ? 'rounded-2xl opacity-80' : 'rounded-lg shadow-md'}`} />
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team" className={`w-full h-auto object-cover aspect-video ${isPop ? 'border-4 border-black shadow-[8px_8px_0px_0px_black]' : isTropical ? 'rounded-2xl opacity-80' : 'rounded-lg shadow-md'}`} loading="lazy" decoding="async" onError={handleImageError} />
               </div>
               <div className="space-y-8 text-xl md:text-3xl">
                 <h3 className="text-2xl md:text-5xl font-bold">■個性バラバラ。でも、想いは一緒。YUITというチームのかたち■</h3>
@@ -1138,7 +1134,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="w-full md:w-1/2">
                <div className="relative aspect-video w-full overflow-hidden border-4 border-black rounded-none shadow-[8px_8px_0px_0px_#ED8936]">
-                 <img src={SES_IMAGE_URL} alt="SES Business" className="w-full h-full object-cover" />
+                 <img src={SES_IMAGE_URL} alt="SES Business" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                  <div className="absolute bottom-0 left-0 w-full p-8 bg-cyan-300 border-t-4 border-black">
                    <h3 className="text-3xl md:text-6xl font-bold text-black">SES Business</h3>
                    <p className="text-base md:text-2xl opacity-80 text-gray-600">System Engineering Service</p>
@@ -1322,7 +1318,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                         isTropical ? 'bg-white/10 backdrop-blur border border-white/20' : 
                         'bg-white/10'
                      }`}>
-                        <img src={PRESIDENT_IMAGE_URL} alt="盛島 加菜" className="w-full h-full object-cover" />
+                        <img src={PRESIDENT_IMAGE_URL} alt="盛島 加菜" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                      </div>
                      <div>
                         <span className={`inline-block px-4 py-1.5 text-sm md:text-xl font-bold mb-3 tracking-widest ${
@@ -1467,11 +1463,7 @@ const Layout = ({ children, theme }: { children?: React.ReactNode, theme: ThemeT
             <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                <div className="flex flex-col items-center md:items-start gap-4">
                   <div className="flex items-center gap-3">
-                     <img 
-                       src={LOGO_URL} 
-                       alt="YUIT Inc." 
-                       className="h-16 w-auto object-contain bg-white rounded-xl p-2"
-                     />
+                     <img src={LOGO_URL} alt="YUIT Inc." className="h-16 w-auto object-contain bg-white rounded-xl p-2" loading="lazy" decoding="async" onError={handleImageError} />
                      <span className="font-bold text-2xl md:text-5xl">YUIT Inc.</span>
                   </div>
                   <p className="opacity-60 text-base md:text-2xl">© 2024 YUIT Inc. All Rights Reserved.</p>
