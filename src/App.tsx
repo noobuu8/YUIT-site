@@ -315,13 +315,15 @@ const PopHero = () => (
         initial={{ scale: 0.8, opacity: 0 }} 
         animate={{ scale: 1, opacity: 1 }} 
         transition={{ type: "spring", bounce: 0.5 }}
-        className="relative w-full max-w-[90vw] xl:max-w-7xl mb-8 scale-95 origin-top flex justify-center items-center lg:-translate-y-6"
+        className="relative w-full max-w-[90vw] xl:max-w-7xl mb-8 flex justify-center items-center lg:-translate-y-6"
       >
         {/* Center Photo Container - serves as anchor */}
-        <div className="relative w-full max-w-4xl z-20">
-            
+        <div className="relative w-full lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl z-20">
+          {/* Scale Wrapper - separated from Framer Motion to avoid transform conflict */}
+          <div className="lg:scale-[0.8] xl:scale-[0.88] 2xl:scale-95 origin-top">
+
             {/* Left Side Image (Absolute relative to Center) */}
-            <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-[95%] w-[65%] z-10 transform -rotate-6 origin-right">
+            <div className="hidden lg:block absolute top-1/2 -translate-y-1/2 right-[95%] lg:w-[50%] xl:w-[55%] 2xl:w-[65%] z-10 transform -rotate-6 origin-right">
                 <div className="bg-white p-3 border-4 border-black shadow-[12px_12px_0px_0px_#ED8936]">
                     <div className="border-2 border-black">
                         <img src={HERO_LEFT_IMAGE_URL} alt="" className="w-full h-auto" />
@@ -330,7 +332,7 @@ const PopHero = () => (
             </div>
 
             {/* Right Side Image (Absolute relative to Center) */}
-            <div className="hidden lg:block absolute top-[60%] -translate-y-1/2 left-[95%] w-[65%] z-10 transform rotate-6 origin-left">
+            <div className="hidden lg:block absolute top-[60%] -translate-y-1/2 left-[95%] lg:w-[50%] xl:w-[55%] 2xl:w-[65%] z-10 transform rotate-6 origin-left">
                 <div className="bg-white p-3 border-4 border-black shadow-[12px_12px_0px_0px_#ED8936]">
                     <div className="border-2 border-black">
                         <img src={HERO_RIGHT_IMAGE_URL} alt="" className="w-full h-auto" />
@@ -348,6 +350,7 @@ const PopHero = () => (
                 </div>
             </div>
 
+          </div>
         </div>
       </motion.div>
       
