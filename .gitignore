@@ -11,3 +11,9 @@ node_modules/.vite/
 .env.local
 .vercel
 .env*.local
+
+# Windows reserved device
+/nul
+
+# Windows reserved device
+/nul
