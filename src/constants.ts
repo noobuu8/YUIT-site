@@ -6,7 +6,7 @@ export const MENU_ITEMS: MenuItem[] = [
   { label: 'MESSAGE', href: '/president' },
   { label: 'CONTACT', href: '/#contact' },
   { label: 'NEWS', href: '/#news' },
-  { label: 'RECRUIT', href: '/recruit' },
+  { label: 'RECRUIT', href: 'https://en-gage.net/yuit-inc_recruit/', isExternal: true },
 ];
 
 export const COMPANY_OVERVIEW: OverviewItem[] = [
@@ -25,11 +25,11 @@ export const NEWS_ITEMS: NewsItem[] = [
     url: '#',
     thumbnail: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=400&h=400' 
   },
-  { 
-    date: '2024.03.15', 
-    category: 'RECRUIT', 
-    title: '2025年度新卒採用のエントリー受付を開始しました', 
-    url: '/recruit',
+  {
+    date: '2024.03.15',
+    category: 'RECRUIT',
+    title: '2025年度新卒採用のエントリー受付を開始しました',
+    url: 'https://en-gage.net/yuit-inc_recruit/',
     thumbnail: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=400&h=400'
   },
   { 

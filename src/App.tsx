@@ -263,8 +263,10 @@ const President = ({ theme }: { theme: ThemeType }) => {
                            一度気軽にお話しましょう!<br/>
                            私のエンジニア挑戦での失敗経験なども包み隠さずお話します!
                          </p>
-                         <Link 
-                           to="/recruit"
+                         <a
+                           href="https://en-gage.net/yuit-inc_recruit/"
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className={`inline-flex items-center gap-2 px-10 py-5 text-xl md:text-4xl font-bold transition-transform hover:scale-105 ${
                              isPop ? 'bg-black text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-black shadow-[4px_4px_0px_0px_#ED8936]' :
                              isTropical ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full shadow-lg' :
@@ -272,7 +274,7 @@ const President = ({ theme }: { theme: ThemeType }) => {
                            }`}
                          >
                             採用情報を見る <ArrowRight size={24} className="md:w-10 md:h-10" />
-                         </Link>
+                         </a>
                       </div>
                    </div>
 
@@ -799,262 +801,6 @@ const PrivacyPolicy = ({ theme }: { theme: ThemeType }) => {
   );
 };
 
-// --- RECRUIT PAGE COMPONENT ---
-const Recruit = ({ theme }: { theme: ThemeType }) => {
-  const isPop = theme === ThemeType.POP;
-  const isTropical = theme === ThemeType.TROPICAL;
-  
-  const containerClass = `container mx-auto px-6 relative z-10`;
-  const sectionTitleClass = isPop 
-    ? "text-4xl md:text-8xl font-black bg-black text-white inline-block px-6 py-3 transform -rotate-1 mb-10"
-    : isTropical 
-      ? "text-4xl md:text-8xl font-bold text-cyan-200 mb-10 border-b-2 border-cyan-500/30 inline-block pb-3"
-      : "text-4xl md:text-8xl font-bold text-slate-800 mb-10 border-l-4 border-yuit-teal pl-6";
-
-  const cardClass = isPop
-    ? "bg-white border-4 border-black shadow-[8px_8px_0px_0px_#ED8936] p-10"
-    : isTropical
-      ? "bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-10 text-white"
-      : "bg-white border border-slate-200 shadow-lg rounded-xl p-10";
-
-  return (
-    <div className={`min-h-screen pt-20 ${isTropical ? 'text-white' : ''}`}>
-      <section className={`relative py-32 overflow-hidden ${isPop ? 'bg-yellow-100' : isTropical ? 'bg-transparent' : 'bg-slate-50'}`}>
-        <div className={containerClass}>
-          <div className="max-w-5xl">
-             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-               <span className={`font-bold tracking-[0.2em] mb-6 block text-lg md:text-3xl ${isPop ? 'text-black' : isTropical ? 'text-cyan-300' : 'text-yuit-teal'}`}>— careers at —</span>
-               <h1 className={`text-6xl md:text-9xl font-black mb-8 leading-tight ${isPop ? 'text-black' : isTropical ? 'text-white' : 'text-slate-800'}`}>
-                 株式会社YUIT<br/>
-                 私たちと一緒に<br/>働きませんか？
-               </h1>
-             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className={containerClass}>
-          <h2 className={sectionTitleClass}>MESSAGE / 私たちの思い</h2>
-          <div className={cardClass}>
-             <h3 className={`text-3xl md:text-6xl font-bold mb-8 ${isPop ? 'text-pink-600' : isTropical ? 'text-pink-300' : 'text-yuit-orange'}`}>
-                ゆるっとガチなエンジニアを育成中！
-             </h3>
-             <p className="leading-loose text-xl md:text-3xl opacity-90">
-               「ITって難しそう」「パソコン苦手だけど大丈夫?」そんな不安は一旦ぜんぶ置いて大丈夫です!<br/>
-               ほぼ全てのメンバーが全くの未経験者。<br/>
-               知識ゼロから安心して飛び込んできてください!
-             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className={`py-24 ${isPop ? 'bg-cyan-100' : isTropical ? 'bg-black/20' : 'bg-slate-50'}`}>
-        <div className={containerClass}>
-           <h2 className={sectionTitleClass}>ABOUT / 私たちについて</h2>
-           <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team" className={`w-full h-auto object-cover aspect-video ${isPop ? 'border-4 border-black shadow-[8px_8px_0px_0px_black]' : isTropical ? 'rounded-2xl opacity-80' : 'rounded-lg shadow-md'}`} loading="lazy" decoding="async" onError={handleImageError} />
-              </div>
-              <div className="space-y-8 text-xl md:text-3xl">
-                <h3 className="text-2xl md:text-5xl font-bold">■個性バラバラ。でも、想いは一緒。YUITというチームのかたち■</h3>
-                <p className="opacity-90 leading-relaxed">
-                  YUIT(ユイティー)には、ちょっとクセ強な(?)メンバーがいっぱい。<br/>
-                  ホテルのフロントスタッフ、不動産営業、芸能活動経験者、飲食店スタッフなどなど…<br/>
-                  「え、そんなバックグラウンドからIT転職!?」というメンバーがたくさん集まっています。
-                </p>
-                <p className="opacity-90 leading-relaxed">
-                  年齢も経歴もバラバラだけど、目指す未来は一緒。だからこそ、支え合えるし、めちゃくちゃ仲がいいんです。
-                </p>
-                <p className="opacity-90 leading-relaxed">
-                  メンバー同士の交流の機会は盛りだくさん!<br/>
-                  週3回の勉強会や、月1の懇親会、プライベートでも頻繁にご飯や飲みに行ったり、、!
-                  情報交換したり、励まし合ったり、ときに爆笑したり。<br/>
-                  YUITには、ただの同僚を超えた“仲間”がいます。
-                </p>
-                <div className={`p-6 ${isPop ? 'bg-white border-2 border-black' : isTropical ? 'bg-white/10 rounded' : 'bg-white border border-slate-200'}`}>
-                   <p className="text-base md:text-2xl">
-                     さらに、月に1回の1on1で役員やCTOと直接話す時間も。スキルや目標の話はもちろん、「最近どう?」っていうゆるっとした相談もOK。人生相談、恋愛相談(!?)まで、なんでもどうぞ。笑
-                   </p>
-                </div>
-                <div className="opacity-90 leading-relaxed">
-                   <p>「将来自社サービス作りたい!」「受託開発もやりたい!」なんて声も出てきていて、まだまだこれから、YUITはどんどん進化していきます!</p>
-                </div>
-              </div>
-           </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-         <div className={containerClass}>
-            <h2 className={sectionTitleClass}>BUSINESS / 事業内容</h2>
-            <div className="mb-16 max-w-4xl">
-              <p className="leading-relaxed text-xl md:text-3xl">
-                YUIT(ユイティー)は、沖縄で未経験からエンジニア転身を叶える会社です。<br/>
-                人と人の結びつきを意味する「結」と「IT」を掛け合わせた社名の通り、<br/>
-                人と人、会社と会社を結んでいく、そんな存在になりたいと考えております!
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-10">
-               <div className={cardClass}>
-                  <div className={`mb-6 inline-block p-3 rounded ${isPop ? 'bg-black text-white' : isTropical ? 'bg-cyan-500 text-white' : 'bg-yuit-teal text-white'}`}>
-                    <Briefcase size={32} className="md:w-12 md:h-12" />
-                  </div>
-                  <h3 className="text-2xl md:text-5xl font-bold mb-6">—SES事業—</h3>
-                  <p className="opacity-80 text-lg md:text-3xl">
-                    当社で0からエンジニアを育成し、様々な開発現場にアサインします。YUITに在籍しながら様々な案件に参画できるため、キャリアアップを目指せます!
-                  </p>
-               </div>
-               <div className={cardClass}>
-                  <div className={`mb-6 inline-block p-3 rounded ${isPop ? 'bg-black text-white' : isTropical ? 'bg-pink-500 text-white' : 'bg-yuit-orange text-white'}`}>
-                    <Laptop size={32} className="md:w-12 md:h-12" />
-                  </div>
-                  <h3 className="text-2xl md:text-5xl font-bold mb-6">—NARAYUN— WEBエンジニア育成事業</h3>
-                  <p className="opacity-80 text-lg md:text-3xl">
-                    当社独自のWEBエンジニア育成カリキュラムを提供しています。自らも未経験からエンジニアになった代表、盛島の経験を活かし、こだわりが詰まったカリキュラムとなっております!<br/>
-                    また、経験豊富な専属トレーナーが付くため、安心してスキルアップを目指すことができます。
-                  </p>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section className={`py-24 ${isPop ? 'bg-yellow-50' : isTropical ? 'bg-white/5' : 'bg-slate-50'}`}>
-         <div className={containerClass}>
-            <h2 className={sectionTitleClass}>MORE INFO / 教育カリキュラム</h2>
-            
-            <div className="flex flex-col md:flex-row gap-16">
-               <div className="md:w-1/2 space-y-8 text-xl md:text-3xl">
-                  <h3 className="text-3xl md:text-6xl font-bold">完全未経験からついに卒業生第一号!<br/>エンジニアデビューを果たしました!</h3>
-                  <p className="leading-relaxed opacity-90">
-                    わたしたちは、知識ゼロ・経験ゼロの方でも“やってみたい”気持ちさえあれば、ゼロからエンジニアを目指せる仕組みをつくっています。<br/>
-                    そして2025年6月、“完全未経験”でスタートしたメンバーが、ついにエンジニアとしてデビュー!!<br/>
-                    沖縄に1人、新たなエンジニアが生まれたこの瞬間は、言葉にできないほどの喜びでした。
-                  </p>
-                  <p className="leading-relaxed opacity-90">
-                    これからの活躍が楽しみで仕方ないのと同時に、「もっと多くの仲間をこの場所から送り出していきたい!」と、チーム一同気合が入っています🔥
-                  </p>
-                  
-                  <div className={`p-8 mt-8 ${isPop ? 'bg-white border-2 border-black' : isTropical ? 'bg-white/10 rounded-xl' : 'bg-white shadow-sm rounded-lg'}`}>
-                     <h4 className="font-bold mb-3 text-lg md:text-3xl">■学んで、働いて、成長して■</h4>
-                     <p className="text-base md:text-2xl opacity-80 mb-6">
-                       「沖縄って、学べる環境が少ないよね」そんな声をよく聞きます。でも、ないなら作ればいい!がYUIT流。<br/>
-                       SES、受託、開発、教育…いろんな挑戦を続けながら、“働きながら学べるエンジニア養成所”のような存在になってきました。
-                       これからもYUITならではのやり方で、“ちょっと未来が楽しみになる社会”をつくっていきます。
-                     </p>
-                     <h4 className="font-bold mb-3 text-lg md:text-3xl">■YUITが目指すのは「豊かな人生」■</h4>
-                     <p className="text-base md:text-2xl opacity-80">
-                       「エンジニアになる」ことがゴールではありません。その先にある、経済的にも精神的にも豊かな未来を獲得すること。幸せになることが人生の目的だと考えています!
-                       だからこそ、もっと身近に、もっと楽しく、挑戦できる場所を──それがYUITのありたい姿です。
-                     </p>
-                  </div>
-               </div>
-               <div className="md:w-1/2 flex items-center justify-center">
-                  <div className={`p-10 text-center ${cardClass}`}>
-                     <Sparkles size={64} className={`mx-auto mb-6 md:w-20 md:h-20 ${isPop ? 'text-yellow-500' : 'text-yellow-300'}`} />
-                     <p className="text-3xl md:text-6xl font-bold mb-6">
-                       さあ、一緒に学び、働き、<br/>笑って、成長していきましょう。
-                     </p>
-                     <p className="text-xl md:text-4xl">あなたの挑戦、<br/>YUITが全力で応援します!</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section className="py-24">
-         <div className={containerClass}>
-            <div className={`flex flex-col md:flex-row-reverse items-center gap-16 ${isPop ? 'bg-white border-4 border-black p-10' : isTropical ? 'bg-white/10 backdrop-blur rounded-3xl p-12' : 'bg-white shadow-xl rounded-2xl p-12'}`}>
-               <div className="md:w-1/3">
-                  <div className={`aspect-square w-full flex items-center justify-center ${isPop ? 'bg-gray-200 border-2 border-black' : isTropical ? 'bg-white/20 rounded-full' : 'bg-gray-100 rounded-full'}`}>
-                     <Users size={80} className={`opacity-50 md:w-32 md:h-32`} />
-                  </div>
-                  <p className="text-center font-bold mt-6 text-xl md:text-4xl">代表取締役 盛島加菜</p>
-               </div>
-               <div className="md:w-2/3 space-y-6 text-xl md:text-3xl">
-                  <h3 className="text-3xl md:text-6xl font-bold">■はじめまして!代表の盛島加菜です■</h3>
-                  <p className="opacity-90">
-                    1994年、宜野湾市で生まれ。コザ高校⇀琉球大学⇀ウガンダで体育教師⇀未経験からWEBエンジニア⇀沖縄でYUITを起業というキャリアを歩んできました!
-                  </p>
-                  <p className="opacity-90">
-                    沖縄でも未経験からWEBエンジニアを目指せる環境を作りたいと思い、立ち上げたYUITですが、創業当初は、お金の問題や私の経営能力の不足などにより、悩める日々を過ごしていました・・・・。
-                  </p>
-                  <p className="opacity-90">
-                    ただ、当初掲げた思いを強くもち仲間とともに頑張ってきた結果・・・・・嬉しいことに現在は20名以上の仲間が集まってくれています(嬉)
-                  </p>
-                  <p className="opacity-90">
-                    そして今回、もっとエンジニアを目指す仲間を集めたいと思い仲間を募集しております!
-                  </p>
-                  <div className={`mt-8 p-6 ${isPop ? 'bg-pink-100 border-2 border-black' : isTropical ? 'bg-pink-500/20 rounded' : 'bg-pink-50 rounded border border-pink-100'}`}>
-                     <p className="font-bold mb-3 text-lg md:text-3xl">■こんなあなたを待っています■</p>
-                     <ul className="list-disc list-inside text-base md:text-2xl space-y-2">
-                        <li>キャリアチェンジしたい!</li>
-                        <li>楽しい会社に出会いたい!</li>
-                        <li>YUITという会社が気になる!</li>
-                        <li>盛島と話をしてみたい!</li>
-                     </ul>
-                     <p className="text-base md:text-2xl mt-4 font-bold">一度気軽にお話しましょう!私のエンジニア挑戦での失敗経験なども包み隠さずお話します!</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section className={`py-24 ${isPop ? 'bg-gray-100' : isTropical ? 'bg-black/40' : 'bg-slate-50'}`}>
-         <div className={containerClass}>
-            <h2 className={sectionTitleClass}>COMPANY / 会社概要</h2>
-            <div className={`${theme === ThemeType.POP ? 'w-full max-w-[1600px]' : 'max-w-5xl'} mx-auto`}>
-               <div className={`text-center mb-8 font-bold text-2xl md:text-5xl ${isTropical ? 'text-cyan-200' : 'text-yuit-teal'}`}>挑戦をもっと身近に。</div>
-               
-               <div className={`${isPop ? 'bg-white border-4 border-black' : isTropical ? 'bg-white/5 border border-white/20 rounded-xl' : 'bg-white border border-slate-200 rounded'}`}>
-                 {[
-                   {k: "会社名", v: "株式会社YUIT"},
-                   {k: "事業内容", v: "SES事業 / NARAYUN（エンジニア育成事業）"},
-                   {k: "企業WEBサイト", v: "https://yuit-inc.jp/"},
-                   {k: "所在地", v: "沖縄県那覇市安里"},
-                 ].map((row, i) => (
-                   <div key={i} className={`flex border-b last:border-0 ${isPop ? 'border-black' : isTropical ? 'border-white/20' : 'border-slate-100'}`}>
-                      <div className={`w-1/3 p-6 font-bold text-lg md:text-3xl ${isPop ? 'bg-gray-200' : isTropical ? 'bg-white/10' : 'bg-slate-50'}`}>{row.k}</div>
-                      <div className="w-2/3 p-6 text-lg md:text-3xl">{row.v}</div>
-                   </div>
-                 ))}
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section className="py-24">
-         <div className={containerClass}>
-            <h2 className={sectionTitleClass}>CAREERS / 採用情報</h2>
-            <div className="text-center space-y-10">
-               <p className="text-xl md:text-3xl">
-                 現在、下記の職種で募集を行なっています。<br/>
-                 応募を検討される方は、以下のページをご覧ください。
-               </p>
-               
-               <a href="https://en-gage.net" target="_blank" rel="noopener noreferrer" 
-                  className={`inline-flex items-center gap-3 px-10 py-5 text-2xl md:text-5xl font-bold transition-transform hover:scale-105 ${
-                    isPop ? 'bg-pink-500 text-white border-4 border-black shadow-[8px_8px_0px_0px_black]' :
-                    isTropical ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-full shadow-lg shadow-pink-500/40' :
-                    'bg-yuit-teal text-white rounded-lg shadow-lg'
-                  }`}>
-                  募集要項を見る (engage) <ExternalLink size={28} className="md:w-12 md:h-12" />
-               </a>
-
-               <div className="mt-16 opacity-60 text-base md:text-2xl">
-                  <p>これらの求人情報は、一部エンゲージ（https://en-gage.net/）にも転載されます。</p>
-                  <p>powered by engage</p>
-                  <p>© en Inc.｜エン株式会社（旧：エン・ジャパン株式会社）</p>
-               </div>
-            </div>
-         </div>
-      </section>
-
-    </div>
-  );
-};
-
 // --- HOME PAGE COMPONENT ---
 const Home = ({ theme }: { theme: ThemeType }) => {
   const containerVariants: Variants = {
@@ -1496,14 +1242,24 @@ const Layout = ({ children, theme }: { children?: React.ReactNode, theme: ThemeT
            
            <nav className="hidden lg:flex items-center gap-8 xl:gap-10">
               {MENU_ITEMS.map((item, i) => {
-                return (
-                 <Link 
-                    key={i} 
+                return item.isExternal ? (
+                  <a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-base md:text-2xl tracking-widest transition-colors ${linkClass}`}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={i}
                     to={item.href}
                     className={`text-base md:text-2xl tracking-widest transition-colors ${linkClass}`}
                   >
-                   {item.label}
-                 </Link>
+                    {item.label}
+                  </Link>
                 );
               })}
            </nav>
@@ -1528,18 +1284,35 @@ const Layout = ({ children, theme }: { children?: React.ReactNode, theme: ThemeT
             >
               <nav className="flex flex-col p-8 gap-6">
                  {MENU_ITEMS.map((item, i) => (
-                    <Link 
-                      key={i} 
-                      to={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`text-xl font-bold ${
-                        isPop ? 'text-black hover:bg-yellow-200 p-2' : 
-                        isTropical ? 'text-white hover:text-cyan-300' : 
-                        'text-slate-700 hover:text-teal-600'
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                    item.isExternal ? (
+                      <a
+                        key={i}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`text-xl font-bold ${
+                          isPop ? 'text-black hover:bg-yellow-200 p-2' :
+                          isTropical ? 'text-white hover:text-cyan-300' :
+                          'text-slate-700 hover:text-teal-600'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={i}
+                        to={item.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`text-xl font-bold ${
+                          isPop ? 'text-black hover:bg-yellow-200 p-2' :
+                          isTropical ? 'text-white hover:text-cyan-300' :
+                          'text-slate-700 hover:text-teal-600'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    )
                  ))}
                </nav>
             </motion.div>
@@ -1595,7 +1368,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home theme={theme} />} />
           <Route path="/president" element={<President theme={theme} />} />
-          <Route path="/recruit" element={<Recruit theme={theme} />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy theme={theme} />} />
         </Routes>
       </Layout>
