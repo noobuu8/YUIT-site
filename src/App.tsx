@@ -380,6 +380,8 @@ const PopOverview = () => (
         <div className="text-xl md:text-4xl font-bold font-pop text-black leading-snug relative z-10">
            {item.label === '代表者' ? (
              <>代表取締役<br/>盛島加菜</>
+           ) : item.label === '所在地' ? (
+             <>〒902-0067<br/>沖縄県那覇市安里381-1<br/>ZORKS沖縄 8F</>
            ) : (
              item.value
            )}
@@ -1143,9 +1145,6 @@ const Home = ({ theme }: { theme: ThemeType }) => {
             </div>
 
             <div className="w-full md:w-1/2">
-              <h2 className="text-4xl md:text-3xl lg:text-5xl xl:text-6xl font-bold mb-10 bg-black text-white inline-block px-6 py-3 transform -rotate-2">
-                事業内容：SES事業
-              </h2>
               <p className="text-xl md:text-3xl mb-10 leading-relaxed opacity-90">
                 YUITでは、未経験者からエンジニアを目指すことができる教育環境を提供しています。
                 トレーナーによるサポートと実践的なカリキュラムで、あなたのエンジニアリングスキルを一から育みます。
@@ -1201,7 +1200,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                     </span>
                 </div>
                 <h3 className="text-2xl md:text-4xl font-bold mb-6">挑戦をもっと身近に。</h3>
-                <p className="opacity-80 leading-relaxed text-lg md:text-3xl">
+                <p className="opacity-80 leading-relaxed text-base md:text-2xl">
                     ITで豊かな沖縄を、人生を、選択肢を創出するために挑戦し続けます。
                 </p>
             </motion.div>
@@ -1220,10 +1219,10 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                         Vision
                     </span>
                 </div>
-                <h3 className="text-2xl md:text-4xl font-bold mb-6">信頼されるITエンジニアを輩出</h3>
-                <p className="text-2xl md:text-4xl font-bold leading-relaxed">
+                <h3 className="text-2xl md:text-4xl font-bold leading-relaxed">
+                    信頼されるITエンジニアを輩出し、<br/>
                     沖縄の新たな可能性に貢献する。
-                </p>
+                </h3>
             </motion.div>
 
             <motion.div 
@@ -1331,13 +1330,6 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                            代表取締役 盛島加菜からのメッセージをご覧いただけます。
                         </p>
                      </div>
-                  </div>
-                  <div className={`flex items-center gap-3 font-bold px-8 py-4 text-lg md:text-3xl transition-colors ${
-                     isPop ? 'bg-white border-2 border-black group-hover:bg-black group-hover:text-white' : 
-                     isTropical ? 'bg-white/20 hover:bg-white hover:text-blue-900 rounded-full border border-white/30' : 
-                     'bg-white text-slate-800 rounded hover:bg-gray-100'
-                  }`}>
-                     Read Message <ArrowRight size={24} className="md:w-8 md:h-8" />
                   </div>
                </div>
              </div>

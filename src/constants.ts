@@ -13,7 +13,7 @@ export const COMPANY_OVERVIEW: OverviewItem[] = [
   { label: '会社名', value: '株式会社 YUIT' },
   { label: '設立', value: '2023年12月8日' },
   { label: '代表者', value: '代表取締役 盛島加菜' },
-  { label: '事業内容', value: 'SES事業 / システムエンジニアリングサービス' },
+  { label: '事業内容', value: 'SES事業 / エンジニア育成事業' },
   { label: '所在地', value: '〒902-0067 沖縄県那覇市安里381-1 ZORKS沖縄 8F' },
 ];
 
