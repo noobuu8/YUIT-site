@@ -384,6 +384,8 @@ const PopOverview = () => (
              <>代表取締役<br/>盛島加菜</>
            ) : item.label === '所在地' ? (
              <>〒902-0067<br/>沖縄県那覇市安里381-1<br/>ZORKS沖縄 8F</>
+           ) : item.label === '事業内容' ? (
+             <>SES事業<br/>エンジニア育成事業</>
            ) : (
              item.value
            )}
@@ -983,9 +985,9 @@ const Home = ({ theme }: { theme: ThemeType }) => {
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="w-full md:w-1/2">
                <div className="relative aspect-video w-full overflow-hidden border-4 border-black rounded-none shadow-[8px_8px_0px_0px_#ED8936]">
-                 <img src={SES_IMAGE_URL} alt="SES Business" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
+                 <img src={SES_IMAGE_URL} alt="SES事業" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                  <div className="absolute bottom-0 left-0 w-full p-8 bg-cyan-300 border-t-4 border-black">
-                   <h3 className="text-3xl md:text-6xl font-bold text-black">SES Business</h3>
+                   <h3 className="text-3xl md:text-6xl font-bold text-black">SES事業</h3>
                    <p className="text-base md:text-2xl opacity-80 text-gray-600">System Engineering Service</p>
                  </div>
                </div>
@@ -1032,15 +1034,15 @@ const Home = ({ theme }: { theme: ThemeType }) => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
-              className={`flex flex-col p-10 h-full ${
+              className={`flex flex-col items-center text-center p-10 h-full ${
                 theme === ThemeType.POP ? 'bg-white border-4 border-black shadow-[8px_8px_0px_0px_#38B2AC]' :
                 theme === ThemeType.TROPICAL ? 'bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl text-white' :
                 'bg-white shadow-lg rounded-xl border-t-4 border-yuit-teal'
               }`}
             >
-                <div className="mb-8">
+                <div className="mb-8 flex flex-col items-center">
                     <Zap size={48} className={`mb-6 md:w-16 md:h-16 ${theme === ThemeType.TROPICAL ? 'text-cyan-300' : 'text-yuit-teal'}`} />
                     <span className={`text-base md:text-2xl font-bold tracking-widest uppercase ${theme === ThemeType.TROPICAL ? 'text-cyan-200' : 'text-yuit-teal'}`}>
                         Mission
@@ -1048,45 +1050,50 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                 </div>
                 <h3 className="text-2xl md:text-4xl font-bold mb-6">挑戦をもっと身近に。</h3>
                 <p className="opacity-80 leading-relaxed text-base md:text-2xl">
-                    ITで豊かな沖縄を、人生を、選択肢を創出するために挑戦し続けます。
+                    ITで豊かな<br/>
+                    沖縄を、人生を、選択肢を<br/>
+                    創出するために<br/>
+                    挑戦し続けます
                 </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
-              className={`flex flex-col p-10 h-full ${
+              className={`flex flex-col items-center text-center p-10 h-full ${
                 theme === ThemeType.POP ? 'bg-white border-4 border-black shadow-[8px_8px_0px_0px_#ED8936]' :
                 theme === ThemeType.TROPICAL ? 'bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl text-white' :
                 'bg-white shadow-lg rounded-xl border-t-4 border-yuit-orange'
               }`}
             >
-                <div className="mb-8">
+                <div className="mb-8 flex flex-col items-center">
                     <Anchor size={48} className={`mb-6 md:w-16 md:h-16 ${theme === ThemeType.TROPICAL ? 'text-orange-300' : 'text-yuit-orange'}`} />
                     <span className={`text-base md:text-2xl font-bold tracking-widest uppercase ${theme === ThemeType.TROPICAL ? 'text-orange-200' : 'text-yuit-orange'}`}>
                         Vision
                     </span>
                 </div>
                 <h3 className="text-2xl md:text-4xl font-bold leading-relaxed">
-                    信頼されるITエンジニアを輩出し、<br/>
-                    沖縄の新たな可能性に貢献する。
+                    信頼される<br/>
+                    ITエンジニアを輩出し<br/>
+                    沖縄の新たな<br/>
+                    可能性に貢献する
                 </h3>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               whileHover={{ y: -5 }}
-              className={`flex flex-col p-10 h-full ${
+              className={`flex flex-col items-center text-center p-10 h-full ${
                 theme === ThemeType.POP ? 'bg-white border-4 border-black shadow-[8px_8px_0px_0px_#ED64A6]' :
                 theme === ThemeType.TROPICAL ? 'bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl text-white' :
                 'bg-white shadow-lg rounded-xl border-t-4 border-slate-700'
               }`}
             >
-                 <div className="mb-8">
+                 <div className="mb-8 flex flex-col items-center">
                     <Heart size={48} className={`mb-6 md:w-16 md:h-16 ${theme === ThemeType.POP ? 'text-pink-500' : theme === ThemeType.TROPICAL ? 'text-pink-300' : 'text-slate-700'}`} />
                     <span className={`text-base md:text-2xl font-bold tracking-widest uppercase ${theme === ThemeType.POP ? 'text-pink-500' : theme === ThemeType.TROPICAL ? 'text-pink-200' : 'text-slate-700'}`}>
                         Values
                     </span>
                 </div>
-                
+
                 <ul className="space-y-8">
                     <li>
                         <h4 className="font-bold text-xl md:text-4xl">Try first</h4>
@@ -1110,7 +1117,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-4xl md:text-8xl font-bold mb-16 text-center text-slate-800">
-              Overview / 会社概要
+              Overview
             </h2>
             
             <PopOverview />
