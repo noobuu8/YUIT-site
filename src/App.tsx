@@ -10,7 +10,7 @@ import { motion, AnimatePresence, Variants, useInView } from 'framer-motion';
 const GROUP_PHOTO_URL = "/images/group-photo.png";
 const HERO_LEFT_IMAGE_URL = "/images/hero-left.jpg";
 const HERO_RIGHT_IMAGE_URL = "/images/hero-right.png";
-const SES_IMAGE_URL = "/images/YUIT-19.jpg";
+const SES_IMAGE_URL = "/images/yuit-19.jpg";
 const NARAYUN_IMAGE_URL = "/images/ses.png";
 const PRESIDENT_IMAGE_URL = "/images/president.jpg";
 const LOGO_URL = "/images/yuit-logo.png";
