@@ -10,7 +10,8 @@ import { motion, AnimatePresence, Variants, useInView } from 'framer-motion';
 const GROUP_PHOTO_URL = "/images/group-photo.png";
 const HERO_LEFT_IMAGE_URL = "/images/hero-left.jpg";
 const HERO_RIGHT_IMAGE_URL = "/images/hero-right.png";
-const SES_IMAGE_URL = "/images/ses.png";
+const SES_IMAGE_URL = "/images/YUIT-19.jpg";
+const NARAYUN_IMAGE_URL = "/images/ses.png";
 const PRESIDENT_IMAGE_URL = "/images/president.jpg";
 const LOGO_URL = "/images/yuit-logo.png";
 
@@ -982,42 +983,45 @@ const Home = ({ theme }: { theme: ThemeType }) => {
 
       <section id="service" className="py-24 relative">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2">
-               <div className="relative aspect-video w-full overflow-hidden border-4 border-black rounded-none shadow-[8px_8px_0px_0px_#ED8936]">
-                 <img src={SES_IMAGE_URL} alt="SES事業" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
-                 <div className="absolute bottom-0 left-0 w-full p-8 bg-cyan-300 border-t-4 border-black">
-                   <h3 className="text-3xl md:text-6xl font-bold text-black">SES事業</h3>
-                   <p className="text-base md:text-2xl opacity-80 text-gray-600">System Engineering Service</p>
-                 </div>
-               </div>
-            </div>
+          {/* セクションタイトル */}
+          <div className="text-center mb-16">
+            <h2 className="text-6xl md:text-9xl font-black mb-6 text-slate-800">Service</h2>
+            <div className="w-24 h-1.5 mx-auto bg-black"></div>
+          </div>
 
+          {/* SES事業ブロック：左に画像、右にテキスト */}
+          <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
             <div className="w-full md:w-1/2">
-              <p className="text-xl md:text-3xl mb-10 leading-relaxed opacity-90">
-                YUITでは、未経験者からエンジニアを目指すことができる教育環境を提供しています。
-                トレーナーによるサポートと実践的なカリキュラムで、あなたのエンジニアリングスキルを一から育みます。
+              <div className="relative aspect-video w-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_#38B2AC]">
+                <img src={SES_IMAGE_URL} alt="SES事業" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
+              </div>
+            </div>
+            <div className="w-full md:w-1/2">
+              <h3 className="text-3xl md:text-6xl font-bold text-black mb-4">SES事業</h3>
+              <p className="text-base md:text-2xl opacity-80 text-gray-600 mb-6">System Engineering Service</p>
+              <p className="text-lg md:text-2xl leading-relaxed opacity-90">
+                YUITでは、未経験からエンジニアを目指す仲間を育て、<br/>
+                さまざまな開発現場で活躍できるエンジニアとして送り出しています。<br/>
+                一つの会社にとどまらず、<br/>
+                いろいろな現場を経験しながらスキルアップできるのが特徴です。
               </p>
-              
-              <div className="grid grid-cols-1 gap-6">
-                 <div className="p-6 flex items-start gap-6 bg-white border-2 border-black">
-                    <div className="p-3 rounded-full bg-yellow-300 border-2 border-black">
-                       <Zap size={24} className="md:w-10 md:h-10" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2 text-xl md:text-4xl">未経験からのキャリアアップ</h4>
-                      <p className="text-base md:text-2xl opacity-80">独自のカリキュラムで基礎から応用までしっかりサポート。</p>
-                    </div>
-                 </div>
-                 <div className="p-6 flex items-start gap-6 bg-white border-2 border-black">
-                    <div className="p-3 rounded-full bg-pink-300 border-2 border-black">
-                       <Anchor size={24} className="md:w-10 md:h-10" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2 text-xl md:text-4xl">多様なプロジェクト</h4>
-                      <p className="text-base md:text-2xl opacity-80">大手企業からスタートアップまで、成長できる現場へアサイン。</p>
-                    </div>
-                 </div>
+            </div>
+          </div>
+
+          {/* NARAYUNブロック：左にテキスト、右に画像 */}
+          <div className="flex flex-col-reverse md:flex-row items-center gap-12">
+            <div className="w-full md:w-1/2">
+              <h3 className="text-3xl md:text-6xl font-bold text-black mb-4">NARAYUN<br/>WEBエンジニア育成事業</h3>
+              <p className="text-base md:text-2xl opacity-80 text-gray-600 mb-6">Engineer Training Program</p>
+              <p className="text-lg md:text-2xl leading-relaxed opacity-90">
+                NARAYUNは、完全未経験からWEBエンジニアを目指すためのYUIT独自の育成プログラムです。<br/>
+                「ITは初めて」「何から始めればいいか分からない」<br/>
+                そんな状態からでも、一歩ずつ成長できる環境を用意しています。
+              </p>
+            </div>
+            <div className="w-full md:w-1/2">
+              <div className="relative aspect-video w-full overflow-hidden border-4 border-black shadow-[8px_8px_0px_0px_#ED8936]">
+                <img src={NARAYUN_IMAGE_URL} alt="NARAYUN WEBエンジニア育成事業" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
               </div>
             </div>
           </div>
@@ -1071,7 +1075,7 @@ const Home = ({ theme }: { theme: ThemeType }) => {
                         Vision
                     </span>
                 </div>
-                <h3 className="text-2xl md:text-4xl font-bold leading-relaxed">
+                <h3 className="text-2xl md:text-4xl font-bold" style={{ lineHeight: 1.5 }}>
                     信頼される<br/>
                     ITエンジニアを輩出し<br/>
                     沖縄の新たな<br/>
@@ -1116,10 +1120,13 @@ const Home = ({ theme }: { theme: ThemeType }) => {
       <section id="overview" className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl md:text-8xl font-bold mb-16 text-center text-slate-800">
-              Overview
-            </h2>
-            
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-8xl font-bold mb-6 text-slate-800">
+                Overview
+              </h2>
+              <div className="w-24 h-1.5 mx-auto bg-black"></div>
+            </div>
+
             <PopOverview />
             
           </div>
