@@ -282,6 +282,111 @@ const President = ({ theme }: { theme: ThemeType }) => {
                 </div>
              </motion.div>
           </div>
+
+          {/* --- TEAM MEMBERS SECTION --- */}
+          <div className="mt-24">
+            <h2 className={`text-3xl md:text-6xl font-bold text-center mb-12 ${
+              isPop ? 'text-black' : isTropical ? 'text-white' : 'text-slate-800'
+            }`}>
+              Team Members
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+              {/* 営業 - 津波古 大海 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className={`${
+                  isPop
+                    ? 'bg-white border-4 border-black shadow-[6px_6px_0px_0px_#38B2AC] p-6 md:p-8'
+                    : isTropical
+                      ? 'bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8'
+                      : 'bg-white shadow-lg rounded-xl p-6 md:p-8 border border-slate-100'
+                }`}
+              >
+                {/* 写真（プレースホルダー） */}
+                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 flex items-center justify-center ${
+                  isPop ? 'bg-gray-100 border-4 border-black' :
+                  isTropical ? 'bg-white/20 rounded-full border-2 border-white/30' :
+                  'bg-gray-100 rounded-lg'
+                }`}>
+                  <Users size={80} className={`${
+                    isPop ? 'text-gray-400' : isTropical ? 'text-white/50' : 'text-gray-400'
+                  }`} />
+                </div>
+
+                {/* 役職 */}
+                <p className={`text-center text-lg md:text-2xl font-bold mb-2 ${
+                  isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'
+                }`}>
+                  営業
+                </p>
+
+                {/* 名前 */}
+                <h3 className={`text-center text-2xl md:text-4xl font-bold mb-4 ${
+                  isTropical ? 'text-white' : 'text-slate-800'
+                }`}>
+                  津波古 大海
+                </h3>
+
+                {/* メッセージ（仮テキスト） */}
+                <p className={`text-base md:text-xl leading-relaxed ${
+                  isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
+                }`}>
+                  ※ここにメッセージが入ります。後ほど差し替え予定です。
+                </p>
+              </motion.div>
+
+              {/* CTO - 関口 貴大 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className={`${
+                  isPop
+                    ? 'bg-white border-4 border-black shadow-[6px_6px_0px_0px_#ED8936] p-6 md:p-8'
+                    : isTropical
+                      ? 'bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-8'
+                      : 'bg-white shadow-lg rounded-xl p-6 md:p-8 border border-slate-100'
+                }`}
+              >
+                {/* 写真（プレースホルダー） */}
+                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 flex items-center justify-center ${
+                  isPop ? 'bg-gray-100 border-4 border-black' :
+                  isTropical ? 'bg-white/20 rounded-full border-2 border-white/30' :
+                  'bg-gray-100 rounded-lg'
+                }`}>
+                  <Users size={80} className={`${
+                    isPop ? 'text-gray-400' : isTropical ? 'text-white/50' : 'text-gray-400'
+                  }`} />
+                </div>
+
+                {/* 役職 */}
+                <p className={`text-center text-lg md:text-2xl font-bold mb-2 ${
+                  isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-500'
+                }`}>
+                  CTO
+                </p>
+
+                {/* 名前 */}
+                <h3 className={`text-center text-2xl md:text-4xl font-bold mb-4 ${
+                  isTropical ? 'text-white' : 'text-slate-800'
+                }`}>
+                  関口 貴大
+                </h3>
+
+                {/* メッセージ（仮テキスト） */}
+                <p className={`text-base md:text-xl leading-relaxed ${
+                  isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
+                }`}>
+                  ※ここにメッセージが入ります。後ほど差し替え予定です。
+                </p>
+              </motion.div>
+            </div>
+          </div>
+          {/* --- END TEAM MEMBERS SECTION --- */}
+
        </div>
     </div>
   );
