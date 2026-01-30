@@ -1,7 +1,7 @@
 import { ThemeType } from '../../types';
 import { motion } from 'framer-motion';
-import { ArrowRight, Users, Quote } from 'lucide-react';
-import { PRESIDENT_IMAGE_URL } from '../../config/images';
+import { ArrowRight, Quote } from 'lucide-react';
+import { PRESIDENT_IMAGE_URL, SALES_IMAGE_URL, CTO_IMAGE_URL } from '../../config/images';
 import { handleImageError } from '../../lib/utils';
 
 export const President = ({ theme }: { theme: ThemeType }) => {
@@ -174,15 +174,13 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                       : 'bg-white shadow-lg rounded-xl p-6 md:p-8 border border-slate-100'
                 }`}
               >
-                {/* 写真（プレースホルダー） */}
-                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 flex items-center justify-center ${
-                  isPop ? 'bg-gray-100 border-4 border-black' :
-                  isTropical ? 'bg-white/20 rounded-full border-2 border-white/30' :
-                  'bg-gray-100 rounded-lg'
+                {/* 写真 */}
+                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 overflow-hidden ${
+                  isPop ? 'border-4 border-black' :
+                  isTropical ? 'rounded-full border-2 border-white/30' :
+                  'rounded-lg'
                 }`}>
-                  <Users size={80} className={`${
-                    isPop ? 'text-gray-400' : isTropical ? 'text-white/50' : 'text-gray-400'
-                  }`} />
+                  <img src={SALES_IMAGE_URL} alt="津波古 大海" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                 </div>
 
                 {/* 役職 */}
@@ -250,15 +248,13 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                       : 'bg-white shadow-lg rounded-xl p-6 md:p-8 border border-slate-100'
                 }`}
               >
-                {/* 写真（プレースホルダー） */}
-                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 flex items-center justify-center ${
-                  isPop ? 'bg-gray-100 border-4 border-black' :
-                  isTropical ? 'bg-white/20 rounded-full border-2 border-white/30' :
-                  'bg-gray-100 rounded-lg'
+                {/* 写真 */}
+                <div className={`aspect-square w-full max-w-[280px] mx-auto mb-6 overflow-hidden ${
+                  isPop ? 'border-4 border-black' :
+                  isTropical ? 'rounded-full border-2 border-white/30' :
+                  'rounded-lg'
                 }`}>
-                  <Users size={80} className={`${
-                    isPop ? 'text-gray-400' : isTropical ? 'text-white/50' : 'text-gray-400'
-                  }`} />
+                  <img src={CTO_IMAGE_URL} alt="関口 貴大" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                 </div>
 
                 {/* 役職 */}
