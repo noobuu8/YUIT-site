@@ -199,12 +199,42 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                   津波古 大海
                 </h3>
 
-                {/* メッセージ（仮テキスト） */}
-                <p className={`text-base md:text-xl leading-relaxed ${
+                {/* キャッチコピー */}
+                <p className={`text-lg md:text-2xl font-bold mb-4 ${
+                  isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'
+                }`}>
+                  「動けばだいたい解決する。まずは外に出よう。」
+                </p>
+
+                {/* 紹介文 */}
+                <div className={`text-base md:text-xl leading-relaxed space-y-4 ${
                   isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
                 }`}>
-                  ※ここにメッセージが入ります。後ほど差し替え予定です。
-                </p>
+                  <p>
+                    県外で通信・インターネット営業を経験し、飛び込み営業や駅前イベントで集客からクロージングまでを担当。
+                    その後沖縄に戻り、家電量販店でのイベント運営やプラン案内を行う。現場で鍛えられた"伝える力"が強み。
+                  </p>
+                  <p>
+                    現在はYUITで営業を中心に、メンバーのサポートやマネジメントも担当。
+                    人見知りせず、まず話してみるスタイル。悩みも課題も、話しているうちに整理されていくことが多い。
+                  </p>
+                  <p>
+                    趣味はとにかく外に出ること。ドライブ、買い物、スポーツ、旅行など、基本的にじっとしていない。
+                    特技は逆立ち。腕が限界を迎えるまで持ちこたえられる。
+                  </p>
+
+                  <div className={`p-4 rounded-lg mt-4 ${
+                    isPop ? 'bg-teal-50 border-2 border-black' :
+                    isTropical ? 'bg-white/5 border border-white/20' :
+                    'bg-teal-50 border border-teal-200'
+                  }`}>
+                    <ul className="space-y-2 text-sm md:text-lg">
+                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな瞬間：</span>会話の中で「あ、それです」が出たとき</li>
+                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span>休日も外に出すぎて家にいない</li>
+                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span>まずは気軽に話しましょう。答えは一緒に探します。</li>
+                    </ul>
+                  </div>
+                </div>
               </motion.div>
 
               {/* CTO - 関口 貴大 */}
