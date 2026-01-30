@@ -646,7 +646,7 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
       <section id="service" className="py-24 relative">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-6xl md:text-9xl font-black mb-6 text-slate-800">Service</h2>
+            <h2 className="text-4xl md:text-8xl font-bold mb-6 text-slate-800">Service</h2>
             <div className="w-24 h-1.5 mx-auto bg-black"></div>
           </div>
 
@@ -708,7 +708,7 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
       <section className={`py-24 relative overflow-hidden`}>
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
-             <h2 className={`text-6xl md:text-9xl font-black mb-6 ${theme === ThemeType.TROPICAL ? 'text-white opacity-90' : 'text-slate-800'}`}>
+             <h2 className={`text-4xl md:text-8xl font-bold mb-6 ${theme === ThemeType.TROPICAL ? 'text-white opacity-90' : 'text-slate-800'}`}>
                Philosophy
              </h2>
              <div className={`w-24 h-1.5 mx-auto ${theme === ThemeType.POP ? 'bg-black' : theme === ThemeType.TROPICAL ? 'bg-cyan-400' : 'bg-yuit-teal'}`}></div>
