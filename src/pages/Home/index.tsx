@@ -516,9 +516,11 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
 
       try {
         const RSS_URL = "https://note.com/yuit_note/rss";
-        const PROXY_URL = `https://corsproxy.io/?${encodeURIComponent(RSS_URL)}`;
+        const fetchUrl = import.meta.env.DEV
+          ? `https://corsproxy.io/?${encodeURIComponent(RSS_URL)}`
+          : '/api/note-rss';
 
-        const res = await fetch(PROXY_URL);
+        const res = await fetch(fetchUrl);
         if (!res.ok) throw new Error("Failed to fetch RSS");
 
         const xmlText = await res.text();
