@@ -3,13 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 import { ThemeType } from '../../types';
 import { MENU_ITEMS, SOCIAL_LINKS } from '../../constants';
 import { Logo } from '../Logo';
-import { Menu, X, Instagram } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { LOGO_URL } from '../../config/images';
 import { handleImageError } from '../../lib/utils';
 import { ScrollToTop } from '../ui/ScrollToTop';
-import { TikTokIcon } from '../icons/TikTokIcon';
-import { NoteIcon } from '../icons/NoteIcon';
 
 export const Layout = ({ children, theme }: { children?: React.ReactNode, theme: ThemeType }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -141,7 +139,7 @@ export const Layout = ({ children, theme }: { children?: React.ReactNode, theme:
         {children}
       </main>
 
-      <footer className={`py-16 ${isPop ? 'bg-black text-white' : isTropical ? 'bg-black/40 text-white backdrop-blur-lg border-t border-white/10' : 'bg-slate-800 text-white'}`}>
+      <footer className="py-16 bg-white text-black border-t-4 border-black">
          <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-10">
                <div className="flex flex-col items-center md:items-start gap-4">
@@ -162,9 +160,9 @@ export const Layout = ({ children, theme }: { children?: React.ReactNode, theme:
                       className={`hover:opacity-80 transition-opacity ${isPop ? 'text-yellow-400' : isTropical ? 'text-cyan-400' : 'text-teal-400'}`}
                       title={social.name}
                     >
-                       {social.name === 'Instagram' && <Instagram size={28} className="md:w-10 md:h-10" />}
-                       {social.name === 'TikTok' && <TikTokIcon size={28} className="md:w-10 md:h-10" />}
-                       {social.name === 'note' && <NoteIcon size={28} className="md:w-10 md:h-10" />}
+                       {social.name === 'Instagram' && <img src="/images/Instagram.png" alt="Instagram" className="w-7 h-7 md:w-10 md:h-10" />}
+                       {social.name === 'TikTok' && <img src="/images/tiktokLogo.png" alt="TikTok" className="w-7 h-7 md:w-10 md:h-10" />}
+                       {social.name === 'note' && <img src="/images/noteLogo.png" alt="note" className="h-7 md:h-10 w-auto" />}
                     </a>
                   ))}
                </div>

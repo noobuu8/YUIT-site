@@ -74,7 +74,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                    <h3 className={`text-2xl md:text-5xl font-bold mb-8 ${
                       isPop ? 'text-pink-600' : isTropical ? 'text-pink-300' : 'text-teal-600'
                    }`}>
-                      「挑戦って楽しい！という人を、沖縄中に増やしたい。」
+                      「挑戦って楽しい！という人を、<br />　沖縄中に増やしたい。」
                    </h3>
 
                    <div className="space-y-6 text-lg md:text-3xl leading-relaxed opacity-90 mb-10">

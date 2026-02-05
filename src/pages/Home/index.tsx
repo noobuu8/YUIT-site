@@ -863,10 +863,10 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
                           isPop ? 'bg-black text-white' : isTropical ? 'bg-cyan-500 text-white' : 'bg-teal-500 text-white rounded'
                         }`}>MESSAGE</span>
                         <h3 className={`text-3xl md:text-6xl font-bold mb-3 ${isPop ? 'text-black' : 'text-white'}`}>
-                          代表挨拶 / President Message
+                          チーム紹介 / Team Message
                         </h3>
                         <p className={`text-base md:text-2xl ${isPop ? 'text-gray-700' : 'text-gray-300'}`}>
-                           代表取締役 盛島加菜からのメッセージをご覧いただけます。
+                           YUITメンバーからのメッセージをご覧いただけます。
                         </p>
                      </div>
                   </div>
