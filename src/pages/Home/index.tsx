@@ -201,7 +201,7 @@ const PopNews = ({ items, isLoading, error }: NewsListProps) => {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 md:space-y-4">
       {items.map((item, i) => (
         <motion.a
           key={i}
@@ -209,27 +209,32 @@ const PopNews = ({ items, isLoading, error }: NewsListProps) => {
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ x: 10, backgroundColor: "#FFF" }}
-          className="block bg-white border-4 border-black p-6 shadow-[4px_4px_0px_0px_black] flex flex-col md:flex-row md:items-center gap-6 group"
+          className="block bg-white border-2 md:border-4 border-black p-4 md:p-6 shadow-[2px_2px_0px_0px_black] md:shadow-[4px_4px_0px_0px_black] flex flex-col md:flex-row md:items-center gap-3 md:gap-6 group"
         >
-          <div className="flex items-center gap-4 flex-shrink-0">
-            <span className="font-bold text-gray-500 text-base md:text-2xl whitespace-nowrap">{item.date}</span>
+          <div className="flex items-center gap-3 md:gap-4 flex-shrink-0">
+            <span className="font-bold text-gray-500 text-sm md:text-2xl whitespace-nowrap">{item.date}</span>
             {item.thumbnail ? (
-              <div className="w-32 h-20 border-2 border-black overflow-hidden bg-gray-100 relative flex-shrink-0">
+              <div className="w-24 h-16 md:w-32 md:h-20 border-2 border-black overflow-hidden bg-gray-100 relative flex-shrink-0">
                  <img src={item.thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
               </div>
             ) : (
-              <span className={`px-3 py-1 text-sm md:text-xl font-black border-2 border-black ${
+              <span className={`px-2 md:px-3 py-1 text-xs md:text-xl font-black border-2 border-black ${
                 item.category === 'INFO' ? 'bg-cyan-200' : item.category === 'RECRUIT' ? 'bg-pink-300' : 'bg-yellow-300'
               }`}>
                 {item.category}
               </span>
             )}
           </div>
-          <h3 className="flex-1 font-bold text-xl md:text-4xl group-hover:text-teal-600 transition-colors line-clamp-2">
-            {item.title}
-          </h3>
-          <div className="bg-black text-white p-2 rounded-full group-hover:bg-teal-500 transition-colors self-start md:self-center ml-auto md:ml-0">
-            <ChevronRight size={24} className="md:w-10 md:h-10" />
+          <div className="flex-1 flex items-center gap-2">
+            <h3 className="flex-1 font-bold text-base md:text-4xl group-hover:text-teal-600 transition-colors line-clamp-2">
+              {item.title}
+            </h3>
+            <div className="bg-black text-white p-1.5 rounded-full group-hover:bg-teal-500 transition-colors flex-shrink-0 md:hidden">
+              <ChevronRight size={20} />
+            </div>
+          </div>
+          <div className="hidden md:block bg-black text-white p-2 rounded-full group-hover:bg-teal-500 transition-colors self-center">
+            <ChevronRight className="w-10 h-10" />
           </div>
         </motion.a>
       ))}
@@ -381,7 +386,7 @@ const PopContact = () => {
           <h3 className="text-5xl md:text-8xl font-black mb-6 bg-white inline-block px-6 py-2 border-4 border-black transform -rotate-2">
             Contact Us
           </h3>
-          <p className="font-bold text-2xl md:text-4xl mb-8">
+          <p className="font-bold text-[1.2rem] md:text-4xl mb-8">
             お仕事のご依頼、採用についてなど、<br/>お気軽にお問い合わせください！
           </p>
           <div className="space-y-6">
@@ -452,7 +457,7 @@ const PopContact = () => {
                </div>
                <div className="flex items-start gap-3 pt-2">
                  <input type="checkbox" id="privacy-pop" required className="mt-1.5 w-5 h-5 md:w-8 md:h-8 border-2 border-black rounded-none text-cyan-500 focus:ring-0 cursor-pointer" />
-                 <label htmlFor="privacy-pop" className="text-base md:text-2xl font-bold cursor-pointer">
+                 <label htmlFor="privacy-pop" className="text-[0.9rem] md:text-2xl font-bold cursor-pointer">
                    <Link to="/privacy-policy" className="underline decoration-2 underline-offset-2 hover:text-cyan-600">プライバシーポリシー</Link>
                    に同意する
                  </label>
@@ -618,7 +623,7 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
               viewport={{ once: false, amount: 0.6 }}
               className="p-12 md:p-20 relative bg-white border-4 border-black shadow-[12px_12px_0px_0px_#38B2AC]"
             >
-               <p className="text-2xl md:text-4xl font-bold leading-relaxed mb-10">
+               <p className="text-[1.35rem] md:text-4xl font-bold leading-relaxed mb-10">
                  人と人の結びつきを意味する<br/>「
                  <motion.span
                    variants={highlightCharVariants}
@@ -635,10 +640,10 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
                  </motion.span>
                  」。
                </p>
-               <p className="text-xl md:text-3xl leading-loose opacity-90">
+               <p className="text-[1.0rem] md:text-3xl leading-loose opacity-90">
                  人と人、会社と会社を繋げていく。<br/>
-                 そんな存在になりたいという思いを込めて <br/>
-                 <span className="font-bold text-3xl md:text-5xl">YUIT</span> と名付けました。
+                 そんな存在になりたいという思いを込めて<br/>
+                 <span className="whitespace-nowrap"><span className="font-bold text-[1.6rem] md:text-5xl">YUIT</span> と名付けました。</span>
                </p>
             </motion.div>
           </div>
@@ -656,7 +661,7 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
             <div className="w-full md:w-1/2">
               <h3 className="text-3xl md:text-6xl font-bold text-black mb-4">SES事業</h3>
               <p className="text-base md:text-2xl opacity-80 text-gray-600 mb-6">System Engineering Service</p>
-              <p className="text-lg md:text-2xl leading-relaxed opacity-90">
+              <p className="text-[0.975rem] md:text-2xl leading-relaxed opacity-90">
                 YUITでは、未経験からエンジニアを目指す仲間を育て、<br/>
                 さまざまな開発現場で活躍できるエンジニアとして送り出しています。<br/>
                 一つの会社にとどまらず、<br/>
@@ -695,9 +700,9 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <h3 className="text-3xl md:text-6xl font-bold text-black mb-4">NARAYUN<br/>WEBエンジニア育成事業</h3>
+              <h3 className="text-3xl md:text-6xl font-bold text-black mb-4">NARAYUN<br/><span className="text-2xl md:text-4xl">WEBエンジニア育成事業</span></h3>
               <p className="text-base md:text-2xl opacity-80 text-gray-600 mb-6">Engineer Training Program</p>
-              <p className="text-lg md:text-2xl leading-relaxed opacity-90">
+              <p className="text-[0.975rem] md:text-2xl leading-relaxed opacity-90">
                 NARAYUNは、完全未経験からWEBエンジニアを目指すためのYUIT独自の育成プログラムです。<br/>
                 「ITは初めて」「何から始めればいいか分からない」<br/>
                 そんな状態からでも、一歩ずつ成長できる環境を用意しています。
@@ -859,11 +864,8 @@ export const Home = ({ theme }: { theme: ThemeType }) => {
                         <img src={PRESIDENT_IMAGE_URL} alt="盛島 加菜" className="w-full h-full object-cover" loading="lazy" decoding="async" onError={handleImageError} />
                      </div>
                      <div>
-                        <span className={`inline-block px-4 py-1.5 text-sm md:text-xl font-bold mb-3 tracking-widest ${
-                          isPop ? 'bg-black text-white' : isTropical ? 'bg-cyan-500 text-white' : 'bg-teal-500 text-white rounded'
-                        }`}>MESSAGE</span>
-                        <h3 className={`text-3xl md:text-6xl font-bold mb-3 ${isPop ? 'text-black' : 'text-white'}`}>
-                          チーム紹介 / Team Message
+                        <h3 className={`text-4xl md:text-8xl font-bold mb-3 ${isPop ? 'text-black' : 'text-white'}`}>
+                          Message
                         </h3>
                         <p className={`text-base md:text-2xl ${isPop ? 'text-gray-700' : 'text-gray-300'}`}>
                            YUITメンバーからのメッセージをご覧いただけます。

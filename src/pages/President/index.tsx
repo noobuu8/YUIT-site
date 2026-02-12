@@ -56,7 +56,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
 
                 <div className={`text-center ${isPop ? 'bg-white border-4 border-black p-4' : ''}`}>
                    <h2 className={`text-3xl md:text-6xl font-bold mb-2 ${isTropical ? 'text-white' : 'text-slate-800'}`}>盛島 加菜</h2>
-                   <p className={`text-lg md:text-3xl font-bold opacity-70 ${isTropical ? 'text-cyan-200' : 'text-teal-600'}`}>Kana Morishima / CEO</p>
+                   <p className={`text-lg md:text-3xl font-bold opacity-70 ${isTropical ? 'text-cyan-200' : 'text-teal-600'}`}>Kana Morishima / 代表取締役</p>
                 </div>
              </motion.div>
 
@@ -71,10 +71,10 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                    {isPop && <div className="absolute top-4 right-4 text-9xl text-gray-100 -z-10 font-black opacity-50 select-none">HELLO</div>}
                    {isTrust && <Quote className="absolute top-8 right-8 text-slate-100 w-32 h-32 -z-10" />}
 
-                   <h3 className={`text-2xl md:text-5xl font-bold mb-8 ${
+                   <h3 className={`text-2xl md:text-5xl font-bold mb-8 text-center ${
                       isPop ? 'text-pink-600' : isTropical ? 'text-pink-300' : 'text-teal-600'
                    }`}>
-                      「挑戦って楽しい！という人を、<br />　沖縄中に増やしたい。」
+                      挑戦って楽しい！という人を、<br />沖縄中に増やしたい。
                    </h3>
 
                    <div className="space-y-6 text-lg md:text-3xl leading-relaxed opacity-90 mb-10">
@@ -100,36 +100,36 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                         'bg-teal-50 border border-teal-200'
                       }`}>
                         <ul className="space-y-3">
-                          <li><span className={`font-bold ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな筋肉：</span>広背筋（エンジニアも体が資本！）</li>
-                          <li><span className={`font-bold ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span>擦り傷が治りにくい</li>
-                          <li><span className={`font-bold ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span>泥臭い挑戦の先にある「楽しさ」を、一緒に味わいましょう！</li>
+                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな筋肉：</span><span>広背筋（エンジニアも体が資本！）</span></li>
+                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>擦り傷が治りにくい</span></li>
+                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>泥臭い挑戦の先にある楽しさを一緒に味わいましょう！</span></li>
                         </ul>
                       </div>
                    </div>
 
-                   <div className={`p-8 rounded-xl ${
+                   <div className={`p-5 md:p-6 rounded-xl ${
                       isPop ? 'bg-yellow-100 border-2 border-black border-dashed' :
                       isTropical ? 'bg-white/5 border border-white/20' :
                       'bg-slate-50 border border-slate-200'
                    }`}>
-                      <h4 className="text-2xl md:text-5xl font-bold mb-6 text-center">■こんなあなたを待っています■</h4>
-                      <ul className="grid md:grid-cols-2 gap-4">
+                      <h4 className="text-[1.15rem] md:text-3xl font-bold mb-4 text-center">■こんなあなたを待っています■</h4>
+                      <ul className="grid md:grid-cols-2 gap-3">
                         {[
                           "キャリアチェンジしたい!",
                           "楽しい会社に出会いたい!",
                           "YUITという会社が気になる!",
                           "盛島と話をしてみたい!"
                         ].map((item, i) => (
-                           <li key={i} className={`flex items-center gap-2 font-bold text-lg md:text-3xl ${isPop ? 'text-black' : isTropical ? 'text-white' : 'text-slate-700'}`}>
-                              <span className={`flex-shrink-0 w-8 h-8 md:w-12 md:h-12 flex items-center justify-center rounded-full ${
+                           <li key={i} className={`flex items-center gap-2 font-bold text-lg md:text-2xl ${isPop ? 'text-black' : isTropical ? 'text-white' : 'text-slate-700'}`}>
+                              <span className={`flex-shrink-0 w-7 h-7 md:w-10 md:h-10 flex items-center justify-center rounded-full text-sm ${
                                  isPop ? 'bg-cyan-400 text-black' : isTropical ? 'bg-cyan-500 text-white' : 'bg-teal-500 text-white'
                               }`}>✓</span>
                               {item}
                            </li>
                         ))}
                       </ul>
-                      <div className="mt-8 text-center">
-                         <p className="font-bold mb-6 text-xl md:text-4xl">
+                      <div className="mt-6 text-center">
+                         <p className="font-bold mb-4 text-lg md:text-2xl">
                            一度気軽にお話しましょう!<br/>
                            私のエンジニア挑戦での失敗経験なども包み隠さずお話します!
                          </p>
@@ -137,13 +137,13 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                            href="https://en-gage.net/yuit-inc_recruit/"
                            target="_blank"
                            rel="noopener noreferrer"
-                           className={`inline-flex items-center gap-2 px-10 py-5 text-xl md:text-4xl font-bold transition-transform hover:scale-105 ${
+                           className={`inline-flex items-center gap-2 px-6 py-3 text-base md:text-xl font-bold transition-transform hover:scale-105 ${
                              isPop ? 'bg-black text-white border-4 border-transparent hover:bg-white hover:text-black hover:border-black shadow-[4px_4px_0px_0px_#ED8936]' :
                              isTropical ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full shadow-lg' :
                              'bg-slate-800 text-white rounded hover:bg-teal-600 shadow-md'
                            }`}
                          >
-                            採用情報を見る <ArrowRight size={24} className="md:w-10 md:h-10" />
+                            採用情報を見る <ArrowRight size={20} className="md:w-6 md:h-6" />
                          </a>
                       </div>
                    </div>
@@ -184,28 +184,28 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 </div>
 
                 {/* 役職 */}
-                <p className={`text-center text-lg md:text-2xl font-bold mb-2 ${
+                <p className={`text-center text-xl md:text-3xl font-bold mb-2 ${
                   isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'
                 }`}>
                   営業
                 </p>
 
                 {/* 名前 */}
-                <h3 className={`text-center text-2xl md:text-4xl font-bold mb-4 ${
+                <h3 className={`text-center text-3xl md:text-5xl font-bold mb-4 ${
                   isTropical ? 'text-white' : 'text-slate-800'
                 }`}>
                   津波古 大海
                 </h3>
 
                 {/* キャッチコピー */}
-                <p className={`text-lg md:text-2xl font-bold mb-4 ${
+                <p className={`text-xl md:text-3xl font-bold mb-4 text-center ${
                   isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'
                 }`}>
-                  「動けばだいたい解決する。まずは外に出よう。」
+                  動けばだいたい解決する。<br className="md:hidden" />まずは外に出よう。
                 </p>
 
                 {/* 紹介文 */}
-                <div className={`text-base md:text-xl leading-relaxed space-y-4 ${
+                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 ${
                   isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
                 }`}>
                   <p>
@@ -226,10 +226,10 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                     isTropical ? 'bg-white/5 border border-white/20' :
                     'bg-teal-50 border border-teal-200'
                   }`}>
-                    <ul className="space-y-2 text-sm md:text-lg">
-                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな瞬間：</span>会話の中で「あ、それです」が出たとき</li>
-                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span>休日も外に出すぎて家にいない</li>
-                      <li><span className={`font-bold ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span>まずは気軽に話しましょう。答えは一緒に探します。</li>
+                    <ul className="space-y-2 text-base md:text-xl">
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな瞬間：</span><span>会話の中で「あ、それです」が出たとき</span></li>
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>休日も外に出すぎて家にいない</span></li>
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>まずは気軽に話しましょう。答えは一緒に探します。</span></li>
                     </ul>
                   </div>
                 </div>
@@ -258,28 +258,28 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 </div>
 
                 {/* 役職 */}
-                <p className={`text-center text-lg md:text-2xl font-bold mb-2 ${
+                <p className={`text-center text-xl md:text-3xl font-bold mb-2 ${
                   isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-500'
                 }`}>
                   CTO
                 </p>
 
                 {/* 名前 */}
-                <h3 className={`text-center text-2xl md:text-4xl font-bold mb-4 ${
+                <h3 className={`text-center text-3xl md:text-5xl font-bold mb-4 ${
                   isTropical ? 'text-white' : 'text-slate-800'
                 }`}>
                   関口 貴大
                 </h3>
 
                 {/* キャッチコピー */}
-                <p className={`text-lg md:text-2xl font-bold mb-4 ${
+                <p className={`text-xl md:text-3xl font-bold mb-4 text-center ${
                   isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'
                 }`}>
-                  「技術は鋭く、物腰は柔らかく。コードに魂を宿すCTO」
+                  技術は鋭く、物腰は柔らかく。<br className="md:hidden" />コードに魂を宿すCTO
                 </p>
 
                 {/* 紹介文 */}
-                <div className={`text-base md:text-xl leading-relaxed space-y-4 ${
+                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 ${
                   isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
                 }`}>
                   <p>
@@ -296,10 +296,10 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                     isTropical ? 'bg-white/5 border border-white/20' :
                     'bg-orange-50 border border-orange-200'
                   }`}>
-                    <ul className="space-y-2 text-sm md:text-lg">
-                      <li><span className={`font-bold ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>好きなもの：</span>ライブ鑑賞、イヤホン収集、技術のキャッチアップ</li>
-                      <li><span className={`font-bold ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>最近の悩み：</span>耳が2つしかないのに、魅力的なイヤホンがこの世に多すぎること</li>
-                      <li><span className={`font-bold ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>メッセージ：</span>めちゃくちゃ優しいよ！！！</li>
+                    <ul className="space-y-2 text-base md:text-xl">
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>好きなもの：</span><span>ライブ鑑賞、イヤホン収集、技術のキャッチアップ</span></li>
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>最近の悩み：</span><span>耳が2つしかないのに、魅力的なイヤホンがこの世に多すぎること</span></li>
+                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>メッセージ：</span><span>めちゃくちゃ優しいよ！！！</span></li>
                     </ul>
                   </div>
                 </div>
