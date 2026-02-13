@@ -51,7 +51,7 @@ export const Layout = ({ children, theme }: { children?: React.ReactNode, theme:
       <ScrollToTop />
       <header className={headerClass}>
         <div className="container mx-auto px-6 h-20 md:h-28 flex items-center justify-between">
-           <Link to="/" className="relative z-50">
+           <Link to="/" className="relative z-50" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
              <Logo className={isTropical ? "brightness-0 invert" : ""} />
            </Link>
 
@@ -147,7 +147,7 @@ export const Layout = ({ children, theme }: { children?: React.ReactNode, theme:
                      <img src={LOGO_URL} alt="YUIT Inc." className="h-16 w-auto object-contain bg-white rounded-xl p-2" loading="lazy" decoding="async" onError={handleImageError} />
                      <span className="font-bold text-2xl md:text-5xl">YUIT Inc.</span>
                   </div>
-                  <p className="opacity-60 text-base md:text-2xl">© 2024 YUIT Inc. All Rights Reserved.</p>
+                  <p className="opacity-60 text-base md:text-2xl">© 2026 YUIT Inc. All Rights Reserved.</p>
                </div>
 
                <div className="flex gap-8">

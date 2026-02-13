@@ -94,15 +94,15 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                         平均睡眠スコアは驚異の87点。
                       </p>
 
-                      <div className={`p-6 rounded-xl ${
+                      <div className={`p-6 rounded-xl text-base md:text-xl ${
                         isPop ? 'bg-pink-50 border-2 border-black' :
                         isTropical ? 'bg-white/5 border border-white/20' :
                         'bg-teal-50 border border-teal-200'
                       }`}>
                         <ul className="space-y-3">
-                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな筋肉：</span><span>広背筋（エンジニアも体が資本！）</span></li>
-                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>擦り傷が治りにくい</span></li>
-                          <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>泥臭い挑戦の先にある楽しさを一緒に味わいましょう！</span></li>
+                          <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな筋肉：</span><span>広背筋（エンジニアも体が資本！）</span></li>
+                          <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>擦り傷が治りにくい</span></li>
+                          <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-pink-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>泥臭い挑戦の先にある楽しさを一緒に味わいましょう！</span></li>
                         </ul>
                       </div>
                    </div>
@@ -113,7 +113,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                       'bg-slate-50 border border-slate-200'
                    }`}>
                       <h4 className="text-[1.15rem] md:text-3xl font-bold mb-4 text-center">■こんなあなたを待っています■</h4>
-                      <ul className="grid md:grid-cols-2 gap-3">
+                      <ul className="grid md:grid-cols-2 gap-3 md:w-fit md:mx-auto md:gap-x-12">
                         {[
                           "キャリアチェンジしたい!",
                           "楽しい会社に出会いたい!",
@@ -166,7 +166,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className={`${
+                className={`md:flex md:flex-col ${
                   isPop
                     ? 'bg-white border-4 border-black shadow-[6px_6px_0px_0px_#38B2AC] p-6 md:p-8'
                     : isTropical
@@ -205,7 +205,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 </p>
 
                 {/* 紹介文 */}
-                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 ${
+                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 md:flex-grow ${
                   isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
                 }`}>
                   <p>
@@ -220,18 +220,18 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                     趣味はとにかく外に出ること。ドライブ、買い物、スポーツ、旅行など、基本的にじっとしていない。
                     特技は逆立ち。腕が限界を迎えるまで持ちこたえられる。
                   </p>
+                </div>
 
-                  <div className={`p-4 rounded-lg mt-4 ${
-                    isPop ? 'bg-teal-50 border-2 border-black' :
-                    isTropical ? 'bg-white/5 border border-white/20' :
-                    'bg-teal-50 border border-teal-200'
-                  }`}>
-                    <ul className="space-y-2 text-base md:text-xl">
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな瞬間：</span><span>会話の中で「あ、それです」が出たとき</span></li>
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>休日も外に出すぎて家にいない</span></li>
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>まずは気軽に話しましょう。答えは一緒に探します。</span></li>
-                    </ul>
-                  </div>
+                <div className={`p-4 rounded-lg mt-4 text-lg md:text-2xl ${
+                  isPop ? 'bg-teal-50 border-2 border-black' :
+                  isTropical ? 'bg-white/5 border border-white/20' :
+                  'bg-teal-50 border border-teal-200'
+                }`}>
+                  <ul className="space-y-2 text-base md:text-xl">
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>好きな瞬間：</span><span>会話の中で「あ、それです」が出たとき</span></li>
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>最近の悩み：</span><span>休日も外に出すぎて家にいない</span></li>
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-teal-600' : isTropical ? 'text-cyan-300' : 'text-teal-600'}`}>メッセージ：</span><span>まずは気軽に話しましょう。答えは一緒に探します。</span></li>
+                  </ul>
                 </div>
               </motion.div>
 
@@ -240,7 +240,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className={`${
+                className={`md:flex md:flex-col ${
                   isPop
                     ? 'bg-white border-4 border-black shadow-[6px_6px_0px_0px_#ED8936] p-6 md:p-8'
                     : isTropical
@@ -279,7 +279,7 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                 </p>
 
                 {/* 紹介文 */}
-                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 ${
+                <div className={`text-lg md:text-2xl leading-relaxed space-y-4 md:flex-grow ${
                   isPop ? 'text-gray-700' : isTropical ? 'text-white/80' : 'text-gray-600'
                 }`}>
                   <p>
@@ -290,18 +290,18 @@ export const President = ({ theme }: { theme: ThemeType }) => {
                     仕事のこだわりは、圧倒的なキャッチアップ速度と精緻な設計。落ち着いたトーンで淡々と、かつロジカルに会話を進める姿は職人そのもの。
                     しかし、ふとした瞬間に見せる「可愛い笑顔」の破壊力は抜群で、そのギャップに癒やされるメンバーも多い。
                   </p>
+                </div>
 
-                  <div className={`p-4 rounded-lg mt-4 ${
-                    isPop ? 'bg-orange-50 border-2 border-black' :
-                    isTropical ? 'bg-white/5 border border-white/20' :
-                    'bg-orange-50 border border-orange-200'
-                  }`}>
-                    <ul className="space-y-2 text-base md:text-xl">
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>好きなもの：</span><span>ライブ鑑賞、イヤホン収集、技術のキャッチアップ</span></li>
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>最近の悩み：</span><span>耳が2つしかないのに、魅力的なイヤホンがこの世に多すぎること</span></li>
-                      <li className="flex"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>メッセージ：</span><span>めちゃくちゃ優しいよ！！！</span></li>
-                    </ul>
-                  </div>
+                <div className={`p-4 rounded-lg mt-4 text-lg md:text-2xl ${
+                  isPop ? 'bg-orange-50 border-2 border-black' :
+                  isTropical ? 'bg-white/5 border border-white/20' :
+                  'bg-orange-50 border border-orange-200'
+                }`}>
+                  <ul className="space-y-2 text-base md:text-xl">
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>好きなもの：</span><span>ライブ鑑賞、イヤホン収集、スキルアップ</span></li>
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>最近の悩み：</span><span>耳が2つしかないのに、魅力的なイヤホンがこの世に多すぎること</span></li>
+                    <li className="flex flex-col md:flex-row"><span className={`font-bold flex-shrink-0 ${isPop ? 'text-orange-500' : isTropical ? 'text-orange-300' : 'text-orange-600'}`}>メッセージ：</span><span>めちゃくちゃ優しいよ！！！</span></li>
+                  </ul>
                 </div>
               </motion.div>
             </div>
