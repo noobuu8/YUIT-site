@@ -1,19 +1,1 @@
-﻿
-# build artifacts / cache
-dist/
 node_modules/
-node_modules/.vite/
-.vite/
-.claude/
-
-# env
-.env
-.env.local
-.vercel
-.env*.local
-
-# Windows reserved device
-/nul
-
-# Windows reserved device
-/nul
